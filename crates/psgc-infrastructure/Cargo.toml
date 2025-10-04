@@ -1,0 +1,17 @@
+[package]
+name = "psgc-infrastructure"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rbs.workspace = true
+rbatis.workspace = true
+rbdc-pg.workspace = true
+tokio = { workspace = true, features = ["full"] }
+uuid.workspace = true
+chrono.workspace = true
+bon.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+dotenvy.workspace = true

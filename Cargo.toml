@@ -1,0 +1,59 @@
+[package]
+name = "psgc-rs"
+version = "0.1.0"
+edition = "2024"
+
+[workspace]
+members = ["crates/psgc-domain", "crates/psgc-infrastructure"]
+resolver = "2"
+
+[workspace.dependencies]
+rbs = { version = "4.5" }
+rbatis = { version = "4.5" }
+rbdc-pg = { version = "4.5" }
+log = "0.4"
+fast_log = "1.6"
+actix = "0.13.5"
+actix-web = "4"
+actix-cors = "0.7.1"
+bon = "3.0.0"
+dotenvy = "0.15.7"
+tracing = "0.1.41"
+tracing-log = "0.2.0"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+actix-multipart = "0.7.2"
+utoipa-actix-web = "0.1.2"
+utoipa = { version = "5.4.0", features = ["uuid", "chrono"] }
+scalar-doc = "0.1.2"
+serde_json = "1.0.140"
+thiserror = "2.0.17"
+anyhow = "1.0.100"
+
+[workspace.dependencies.serde]
+version = "1.0.228"
+features = ["derive"]
+
+[workspace.dependencies.tokio]
+version = "1"
+default-features = false
+
+[workspace.dependencies.chrono]
+version = "0.4.40"
+features = ["serde"]
+
+[workspace.dependencies.uuid]
+version = "1.16.0"
+features = ["v7", "serde"]
+
+[dependencies]
+psgc-infrastructure = { path = "crates/psgc-infrastructure" }
+
+anyhow.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-log.workspace = true
+
+[[bin]]
+name = "seeder"
+path = "src/bin/seeder.rs"

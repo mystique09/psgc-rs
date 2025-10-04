@@ -1,0 +1,110 @@
+[
+  {
+    "name": "National Capital Region",
+    "designation": "NCR",
+    "code": "1300000000",
+    "population": 13484462
+  },
+  {
+    "name": "Cordillera Administrative Region",
+    "designation": "CAR",
+    "code": "1400000000",
+    "population": 1797660
+  },
+  {
+    "name": "Ilocos Region",
+    "designation": "Region I",
+    "code": "0100000000",
+    "population": 5301139
+  },
+  {
+    "name": "Cagayan Valley",
+    "designation": "Region II",
+    "code": "0200000000",
+    "population": 3685744
+  },
+  {
+    "name": "Central Luzon",
+    "designation": "Region III",
+    "code": "0300000000",
+    "population": 12422172
+  },
+  {
+    "name": "CALABARZON",
+    "designation": "Region IV-A",
+    "code": "0400000000",
+    "population": 16195042
+  },
+  {
+    "name": "Southwestern Tagalog Region",
+    "designation": "MIMAROPA",
+    "code": "1700000000",
+    "population": 3228558
+  },
+  {
+    "name": "Bicol Region",
+    "designation": "Region V",
+    "code": "0500000000",
+    "population": 6082165
+  },
+  {
+    "name": "Western Visayas",
+    "designation": "Region VI",
+    "code": "0600000000",
+    "population": 7954723
+  },
+  {
+    "name": "Negros Island Region",
+    "designation": "NIR",
+    "code": "1800000000",
+    "population": 4760340
+  },
+  {
+    "name": "Central Visayas",
+    "designation": "Region VII",
+    "code": "0700000000",
+    "population": 8081988
+  },
+  {
+    "name": "Eastern Visayas",
+    "designation": "Region VIII",
+    "code": "0800000000",
+    "population": 4547150
+  },
+  {
+    "name": "Zamboanga Peninsula",
+    "designation": "Region IX",
+    "code": "0900000000",
+    "population": 4875684
+  },
+  {
+    "name": "Northern Mindanao",
+    "designation": "Region X",
+    "code": "1000000000",
+    "population": 5022768
+  },
+  {
+    "name": "Davao Region",
+    "designation": "Region XI",
+    "code": "1100000000",
+    "population": 5243536
+  },
+  {
+    "name": "SOCCSKSARGEN",
+    "designation": "Region XII",
+    "code": "1200000000",
+    "population": 4360974
+  },
+  {
+    "name": "Caraga Region",
+    "designation": "Region XIII",
+    "code": "1600000000",
+    "population": 2804788
+  },
+  {
+    "name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+    "designation": "BARMM",
+    "code": "1900000000",
+    "population": 3944692
+  }
+]
