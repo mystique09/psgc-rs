@@ -5,6 +5,7 @@ use chrono::Utc;
 pub struct Region {
     id: uuid::Uuid,
     code: String,
+    correspondence_code: String,
     name: String,
     designation: String,
     population: u64,

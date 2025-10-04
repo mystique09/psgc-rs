@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 pub struct Barangay {
     id: uuid::Uuid,
     code: String,
+    correspondence_code: String,
     name: String,
     population: u64,
     city_id: Option<uuid::Uuid>,
