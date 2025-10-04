@@ -1,0 +1,130 @@
+[
+  {
+    "name": "City of Caloocan",
+    "code": 1380100000,
+    "correspondence_code": 137501000,
+    "income_class": "1st",
+    "population": "1,661,584",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Las Pi�as",
+    "code": 1380200000,
+    "correspondence_code": 137601000,
+    "income_class": "1st",
+    "population": "606,293",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Makati",
+    "code": 1380300000,
+    "correspondence_code": 137602000,
+    "income_class": "1st",
+    "population": "629,616",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Malabon",
+    "code": 1380400000,
+    "correspondence_code": 137502000,
+    "income_class": "1st",
+    "population": "380,522",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Mandaluyong",
+    "code": 1380500000,
+    "correspondence_code": 137401000,
+    "income_class": "1st",
+    "population": "425,758",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Manila",
+    "code": 1380600000,
+    "correspondence_code": 133900000,
+    "income_class": "1st",
+    "population": "1,846,513",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Marikina",
+    "code": 1380700000,
+    "correspondence_code": 137402000,
+    "income_class": "1st",
+    "population": "456,059",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Muntinlupa",
+    "code": 1380800000,
+    "correspondence_code": 137603000,
+    "income_class": "1st",
+    "population": "543,445",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Navotas",
+    "code": 1380900000,
+    "correspondence_code": 137503000,
+    "income_class": "1st",
+    "population": "247,543",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Para�aque",
+    "code": 1381000000,
+    "correspondence_code": 137604000,
+    "income_class": "1st",
+    "population": "689,992",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "Pasay City",
+    "code": 1381100000,
+    "correspondence_code": 137605000,
+    "income_class": "1st",
+    "population": "440,656",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Pasig",
+    "code": 1381200000,
+    "correspondence_code": 137403000,
+    "income_class": "1st",
+    "population": "803,159",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "Quezon City",
+    "code": 1381300000,
+    "correspondence_code": 137404000,
+    "income_class": "1st",
+    "population": "2,960,048",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of San Juan",
+    "code": 1381400000,
+    "correspondence_code": 137405000,
+    "income_class": "1st",
+    "population": "126,347",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Taguig",
+    "code": 1381500000,
+    "correspondence_code": 137607000,
+    "income_class": "1st",
+    "population": "886,722",
+    "region_code": "1300000000"
+  },
+  {
+    "name": "City of Valenzuela",
+    "code": 1381600000,
+    "correspondence_code": 137504000,
+    "income_class": "1st",
+    "population": "714,978",
+    "region_code": "1300000000"
+  }
+]
