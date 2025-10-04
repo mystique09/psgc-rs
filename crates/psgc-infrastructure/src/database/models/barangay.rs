@@ -9,10 +9,10 @@ pub struct Barangay {
     correspondence_code: String,
     name: String,
     population: u64,
+    urban_rural: String,
     city_id: Option<uuid::Uuid>,
     municipality_id: Option<uuid::Uuid>,
     district_id: Option<uuid::Uuid>,
-    urban_rural: String,
     created_at: chrono::DateTime<Utc>,
     updated_at: chrono::DateTime<Utc>,
 }

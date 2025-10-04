@@ -9,8 +9,8 @@ pub struct Province {
     correspondence_code: String,
     name: String,
     population: u64,
-    region_id: uuid::Uuid,
     income_class: String,
+    region_id: Option<uuid::Uuid>,
     created_at: chrono::DateTime<Utc>,
     updated_at: chrono::DateTime<Utc>,
 }

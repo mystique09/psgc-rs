@@ -9,7 +9,7 @@ pub struct District {
     correspondence_code: String,
     name: String,
     population: u64,
-    region_id: uuid::Uuid,
+    region_id: Option<uuid::Uuid>,
     created_at: chrono::DateTime<Utc>,
     updated_at: chrono::DateTime<Utc>,
 }

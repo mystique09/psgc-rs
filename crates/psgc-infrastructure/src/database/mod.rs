@@ -1,5 +1,7 @@
 pub(crate) mod mappers;
+pub mod migrator;
 pub(crate) mod models;
+pub mod pool;
 pub mod seeder;
 
 #[allow(dead_code)]
