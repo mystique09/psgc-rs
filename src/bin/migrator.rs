@@ -1,4 +1,3 @@
-use flyway::migrations;
 use psgc_infrastructure::{
     config::db_config::DatabaseConfig,
     database::{migrator::migrator, pool::create_db_pool},
@@ -7,18 +6,17 @@ use tracing::info;
 use tracing_log::LogTracer;
 use tracing_subscriber::{Layer, layer::SubscriberExt};
 
-#[migrations("migrations/")]
 pub struct Migrations {}
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    println!("Seeding database...");
+    println!("Migrating database...");
 
     let config = DatabaseConfig::from_env()?;
     let pool = create_db_pool(&config)?;
-    let migration_store = Migrations {};
+    let _migration_store = Migrations {};
 
-    migrator(migration_store, pool).await?;
+    migrator(pool).await?;
 
     Ok(())
 }
