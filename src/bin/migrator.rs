@@ -1,22 +1,15 @@
-use psgc_infrastructure::{
-    config::db_config::DatabaseConfig,
-    database::{migrator::migrator, pool::create_db_pool},
-};
+use psgc_infrastructure::{config::db_config::DatabaseConfig, database::migrator::migrator};
 use tracing::info;
 use tracing_log::LogTracer;
 use tracing_subscriber::{Layer, layer::SubscriberExt};
-
-pub struct Migrations {}
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     println!("Migrating database...");
 
     let config = DatabaseConfig::from_env()?;
-    let pool = create_db_pool(&config)?;
-    let _migration_store = Migrations {};
 
-    migrator(pool).await?;
+    migrator(&config).await?;
 
     Ok(())
 }

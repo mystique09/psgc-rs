@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use crate::database::DatabaseSeedError;
 
 #[allow(dead_code)]
-#[derive(Debug, Serialize, Deserialize, bon::Builder)]
+#[derive(Debug, Default, Serialize, Deserialize, bon::Builder)]
 pub struct Region {
     id: uuid::Uuid,
     code: String,
@@ -20,10 +20,10 @@ rbatis::crud!(Region {});
 
 #[derive(Debug, Serialize, Deserialize, bon::Builder)]
 struct RegionData {
-    code: String,
-    correspondence_code: String,
     name: String,
     designation: String,
+    code: String,
+    correspondence_code: String,
     population: u64,
 }
 

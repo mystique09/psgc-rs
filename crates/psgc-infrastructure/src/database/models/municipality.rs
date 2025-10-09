@@ -2,7 +2,7 @@ use chrono::Utc;
 use serde::{Deserialize, Serialize};
 
 #[allow(dead_code)]
-#[derive(Debug, Serialize, Deserialize, bon::Builder)]
+#[derive(Debug, Default, Serialize, Deserialize, bon::Builder)]
 pub struct Municipality {
     id: uuid::Uuid,
     code: String,
