@@ -5,8 +5,6 @@ use tracing_subscriber::{Layer, layer::SubscriberExt};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    println!("Seeding database...");
-
     let config = DatabaseConfig::from_env()?;
 
     seeder(&config).await?;

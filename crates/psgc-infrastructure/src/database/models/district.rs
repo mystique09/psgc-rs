@@ -14,4 +14,4 @@ pub struct District {
     updated_at: chrono::DateTime<Utc>,
 }
 
-rbatis::crud!(District {});
+rbatis::crud!(District {}, "districts");

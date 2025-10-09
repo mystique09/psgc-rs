@@ -14,4 +14,4 @@ pub struct SubMunicipality {
     updated_at: chrono::DateTime<Utc>,
 }
 
-rbatis::crud!(SubMunicipality {});
+rbatis::crud!(SubMunicipality {}, "sub_municipalities");

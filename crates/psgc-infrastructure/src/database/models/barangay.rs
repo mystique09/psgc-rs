@@ -17,4 +17,4 @@ pub struct Barangay {
     updated_at: chrono::DateTime<Utc>,
 }
 
-rbatis::crud!(Barangay {});
+rbatis::crud!(Barangay {}, "barangays");

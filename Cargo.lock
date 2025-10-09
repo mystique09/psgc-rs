@@ -1083,6 +1083,7 @@ dependencies = [
  "bytes",
  "fallible-iterator",
  "postgres-protocol",
+ "uuid",
 ]
 
 [[package]]
@@ -1147,6 +1148,7 @@ dependencies = [
  "bon",
  "chrono",
  "dotenvy",
+ "psgc-shared",
  "rbatis",
  "rbdc-pg",
  "rbs",
@@ -1170,6 +1172,10 @@ dependencies = [
  "tracing-log",
  "tracing-subscriber",
 ]
+
+[[package]]
+name = "psgc-shared"
+version = "0.1.0"
 
 [[package]]
 name = "quote"

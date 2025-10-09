@@ -1,3 +1,4 @@
+pub(crate) mod generators;
 pub(crate) mod mappers;
 pub mod migrator;
 pub(crate) mod models;

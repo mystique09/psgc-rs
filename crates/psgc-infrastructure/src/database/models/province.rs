@@ -15,4 +15,4 @@ pub struct Province {
     updated_at: chrono::DateTime<Utc>,
 }
 
-rbatis::crud!(Province {});
+rbatis::crud!(Province {}, "provinces");

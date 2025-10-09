@@ -6,6 +6,7 @@ pub async fn seeder(config: &DatabaseConfig) -> anyhow::Result<()> {
     db.init(rbdc_pg::driver::PgDriver {}, &config.db_url)
         .unwrap();
 
+    println!("Seeding database...");
     seed_regions(&db).await?;
 
     Ok(())

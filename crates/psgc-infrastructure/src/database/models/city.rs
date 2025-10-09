@@ -17,4 +17,4 @@ pub struct City {
     updated_at: chrono::DateTime<Utc>,
 }
 
-rbatis::crud!(City {});
+rbatis::crud!(City {}, "cities");
