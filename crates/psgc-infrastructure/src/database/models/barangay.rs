@@ -4,6 +4,7 @@ use crate::database::{
     helpers::{get_city_map, get_municipality_map},
 };
 use serde::{Deserialize, Serialize};
+use tracing::info;
 
 #[derive(Debug, Default, Serialize, Deserialize, bon::Builder)]
 pub struct Barangay {
@@ -34,6 +35,8 @@ struct BarangayData {
 rbatis::crud!(Barangay {}, "barangays");
 
 pub async fn seed_barangays(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> {
+    info!("Seeding barangays...");
+
     let mut executor = db
         .acquire()
         .await
@@ -85,7 +88,7 @@ pub async fn seed_barangays(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError
         .await
         .map_err(|e| crate::database::DatabaseSeedError::DbError(e))?;
 
-    println!("Added {} barangays to database", barangays.len());
+    info!("Added {} barangays to database", barangays.len());
 
     Ok(())
 }

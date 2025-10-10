@@ -8,10 +8,14 @@ use tracing_subscriber::{Layer, layer::SubscriberExt};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    setup_tracing();
+
     let config = DatabaseConfig::from_env()?;
     let pool = create_db_pool(&config)?;
 
+    info!("Initializing PSGC database seed...");
     seeder(pool).await?;
+    info!("PSGC database seeding completed successfully.");
 
     Ok(())
 }
@@ -22,7 +26,7 @@ pub fn setup_tracing() {
 
     let filter_layer = tracing_subscriber::EnvFilter::try_from_default_env().unwrap_or_else(|_| {
         format!(
-            "RUST_LOG=info,{}=info,psgc_infrastructure=info,tokio=trace,runtime=trace",
+            "RUST_LOG=info,{}=info,psgc_infrastructure=info,tokio=trace,runtime=trace,rbatis=info",
             crate_name
         )
         .into()

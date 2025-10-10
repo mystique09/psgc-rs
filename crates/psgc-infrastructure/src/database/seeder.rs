@@ -7,7 +7,6 @@ use crate::database::models::{
 };
 
 pub async fn seeder(db: Arc<RBatis>) -> anyhow::Result<()> {
-    println!("Seeding database...");
     seed_regions(&db).await?;
     seed_provinces(&db).await?;
     seed_cities(&db).await?;

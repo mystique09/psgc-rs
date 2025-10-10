@@ -20,5 +20,6 @@ anyhow.workspace = true
 refinery.workspace = true
 bb8.workspace = true
 bb8-postgres.workspace = true
+tracing.workspace = true
 
 psgc-shared = { path = "../psgc-shared" }

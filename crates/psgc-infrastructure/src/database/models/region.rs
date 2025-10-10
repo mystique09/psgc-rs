@@ -3,6 +3,7 @@ use crate::database::{
     generators::{datetime_utc_now, uuid_now},
 };
 use serde::{Deserialize, Serialize};
+use tracing::info;
 
 #[allow(dead_code)]
 #[derive(Debug, Default, Serialize, Deserialize, bon::Builder)]
@@ -29,7 +30,7 @@ struct RegionData {
 }
 
 pub async fn seed_regions(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> {
-    println!("Sedding regions...");
+    info!("Sedding regions...");
     let regions = include_str!("../data/json/regions.json");
 
     let regions = serde_json::from_str::<Vec<RegionData>>(regions)
@@ -55,6 +56,7 @@ pub async fn seed_regions(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> 
         .await
         .map_err(|e| DatabaseSeedError::DbError(e))?;
 
-    println!("Added {} regions to database", regions.len());
+    info!("Added {} regions to database", regions.len());
+
     Ok(())
 }

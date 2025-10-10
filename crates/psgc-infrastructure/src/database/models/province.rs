@@ -1,5 +1,6 @@
 use crate::database::{generators::datetime_utc_now, helpers::get_region_map};
 use serde::{Deserialize, Serialize};
+use tracing::{info, warn};
 
 #[allow(dead_code)]
 #[derive(Debug, Default, Serialize, Deserialize, bon::Builder)]
@@ -37,7 +38,7 @@ struct ProvinceData {
 }
 
 pub async fn seed_provinces(db: &rbatis::RBatis) -> Result<(), crate::database::DatabaseSeedError> {
-    println!("Seeding provinces...");
+    info!("Seeding provinces...");
 
     let mut executor = db
         .acquire()
@@ -58,8 +59,8 @@ pub async fn seed_provinces(db: &rbatis::RBatis) -> Result<(), crate::database::
             let region_id = region_map.get(region_code).cloned();
 
             if region_id.is_none() {
-                println!(
-                    "WARN: Province {} ({}) - No region found for code {}",
+                warn!(
+                    "Province {} ({}) - No region found for code {}",
                     p.name, p.code, region_code
                 );
             }
@@ -84,6 +85,7 @@ pub async fn seed_provinces(db: &rbatis::RBatis) -> Result<(), crate::database::
         .await
         .map_err(|e| crate::database::DatabaseSeedError::DbError(e))?;
 
-    println!("Added {} provinces to database", provinces.len());
+    info!("Added {} provinces to database", provinces.len());
+
     Ok(())
 }
