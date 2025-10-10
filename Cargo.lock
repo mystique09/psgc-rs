@@ -1130,6 +1130,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "psgc-api"
+version = "0.1.0"
+
+[[package]]
+name = "psgc-application"
+version = "0.1.0"
+
+[[package]]
 name = "psgc-domain"
 version = "0.1.0"
 dependencies = [

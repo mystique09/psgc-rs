@@ -5,6 +5,8 @@ edition = "2024"
 
 [workspace]
 members = [
+    "crates/psgc-api",
+    "crates/psgc-application",
     "crates/psgc-domain",
     "crates/psgc-infrastructure",
     "crates/psgc-shared",
