@@ -1,9 +1,6 @@
 use chrono::Utc;
 
-use crate::models::{
-    city::City, district::District, province::Province, region::Region,
-    sub_municipality::SubMunicipality,
-};
+use crate::models::{city::City, district::District, province::Province, region::Region};
 
 #[allow(dead_code)]
 #[derive(Debug, bon::Builder)]
@@ -16,7 +13,6 @@ pub struct Municipality {
     income_class: String,
     region_id: Option<uuid::Uuid>,
     province_id: Option<uuid::Uuid>,
-    city_id: Option<uuid::Uuid>,
     district_id: Option<uuid::Uuid>,
     sub_municipality_id: Option<uuid::Uuid>,
     barangay_id: Option<uuid::Uuid>,
@@ -24,7 +20,6 @@ pub struct Municipality {
     province: Option<Province>,
     city: Option<City>,
     district: Option<District>,
-    sub_municipality: Option<SubMunicipality>,
     created_at: chrono::DateTime<Utc>,
     updated_at: chrono::DateTime<Utc>,
 }

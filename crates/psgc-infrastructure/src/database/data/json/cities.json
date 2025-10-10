@@ -1,130 +1,1462 @@
 [
   {
-    "name": "City of Caloocan",
-    "code": 1380100000,
-    "correspondence_code": 137501000,
-    "income_class": "1st",
-    "population": "1,661,584",
-    "region_code": "1300000000"
+    "code": "0102805000",
+    "name": "City of Batac",
+    "correspondence_code": "012805000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
   },
   {
-    "name": "City of Las Pi�as",
-    "code": 1380200000,
-    "correspondence_code": 137601000,
-    "income_class": "1st",
-    "population": "606,293",
-    "region_code": "1300000000"
+    "code": "0102812000",
+    "name": "City of Laoag (Capital)",
+    "correspondence_code": "012812000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
   },
   {
-    "name": "City of Makati",
-    "code": 1380300000,
-    "correspondence_code": 137602000,
-    "income_class": "1st",
-    "population": "629,616",
-    "region_code": "1300000000"
+    "code": "0102906000",
+    "name": "City of Candon",
+    "correspondence_code": "012906000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
   },
   {
-    "name": "City of Malabon",
-    "code": 1380400000,
-    "correspondence_code": 137502000,
-    "income_class": "1st",
-    "population": "380,522",
-    "region_code": "1300000000"
+    "code": "0102934000",
+    "name": "City of Vigan (Capital)",
+    "correspondence_code": "012934000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
   },
   {
-    "name": "City of Mandaluyong",
-    "code": 1380500000,
-    "correspondence_code": 137401000,
-    "income_class": "1st",
-    "population": "425,758",
-    "region_code": "1300000000"
+    "code": "0103314000",
+    "name": "City of San Fernando (Capital)",
+    "correspondence_code": "013314000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
   },
   {
+    "code": "0105503000",
+    "name": "City of Alaminos",
+    "correspondence_code": "015503000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0105518000",
+    "name": "City of Dagupan",
+    "correspondence_code": "015518000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "ICC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0105532000",
+    "name": "City of San Carlos",
+    "correspondence_code": "015532000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0105546000",
+    "name": "City of Urdaneta",
+    "correspondence_code": "015546000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0201529000",
+    "name": "Tuguegarao City (Capital)",
+    "correspondence_code": "021529000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0203108000",
+    "name": "City of Cauayan",
+    "correspondence_code": "023108000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0203114000",
+    "name": "City of Ilagan (Capital)",
+    "correspondence_code": "023114000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0203135000",
+    "name": "City of Santiago",
+    "correspondence_code": "023135000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "ICC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0300803000",
+    "name": "City of Balanga (Capital)",
+    "correspondence_code": "030803000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0301410000",
+    "name": "City of Malolos (Capital)",
+    "correspondence_code": "031410000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0301412000",
+    "name": "City of Meycauayan",
+    "correspondence_code": "031412000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0301420000",
+    "name": "City of San Jose Del Monte",
+    "correspondence_code": "031420000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0304903000",
+    "name": "City of Cabanatuan",
+    "correspondence_code": "034903000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0304908000",
+    "name": "City of Gapan",
+    "correspondence_code": "034908000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0304917000",
+    "name": "Science City of Muñoz",
+    "correspondence_code": "034917000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0304919000",
+    "name": "City of Palayan (Capital)",
+    "correspondence_code": "034919000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0304926000",
+    "name": "San Jose City",
+    "correspondence_code": "034926000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0330100000",
+    "name": "City of Angeles",
+    "correspondence_code": "035401000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0305409000",
+    "name": "Mabalacat City",
+    "correspondence_code": "035409000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0305416000",
+    "name": "City of San Fernando (Capital)",
+    "correspondence_code": "035416000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0306916000",
+    "name": "City of Tarlac (Capital)",
+    "correspondence_code": "036916000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0331400000",
+    "name": "City of Olongapo",
+    "correspondence_code": "037107000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0401005000",
+    "name": "Batangas City (Capital)",
+    "correspondence_code": "041005000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0401014000",
+    "name": "City of Lipa",
+    "correspondence_code": "041014000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0401028000",
+    "name": "City of Sto. Tomas",
+    "correspondence_code": "041028000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0401031000",
+    "name": "City of Tanauan",
+    "correspondence_code": "041031000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0402103000",
+    "name": "City of Bacoor",
+    "correspondence_code": "042103000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0402105000",
+    "name": "City of Cavite",
+    "correspondence_code": "042105000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0402106000",
+    "name": "City of Dasmariñas",
+    "correspondence_code": "042106000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0402108000",
+    "name": "City of General Trias",
+    "correspondence_code": "042108000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0402109000",
+    "name": "City of Imus",
+    "correspondence_code": "042109000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0402119000",
+    "name": "City of Tagaytay",
+    "correspondence_code": "042119000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0402122000",
+    "name": "City of Trece Martires (Capital)",
+    "correspondence_code": "042122000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0403403000",
+    "name": "City of Biñan",
+    "correspondence_code": "043403000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0403404000",
+    "name": "City of Cabuyao",
+    "correspondence_code": "043404000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0403405000",
+    "name": "City of Calamba",
+    "correspondence_code": "043405000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0403424000",
+    "name": "City of San Pablo",
+    "correspondence_code": "043424000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0403425000",
+    "name": "City of San Pedro",
+    "correspondence_code": "043425000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0403428000",
+    "name": "City of Santa Rosa",
+    "correspondence_code": "043428000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0431200000",
+    "name": "City of Lucena (Capital)",
+    "correspondence_code": "045624000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0405647000",
+    "name": "City of Tayabas",
+    "correspondence_code": "045647000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "6th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0405802000",
+    "name": "City of Antipolo (Capital)",
+    "correspondence_code": "045802000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1705205000",
+    "name": "City of Calapan (Capital)",
+    "correspondence_code": "175205000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1731500000",
+    "name": "City of Puerto Princesa (Capital)",
+    "correspondence_code": "175316000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0500506000",
+    "name": "City of Legazpi (Capital)",
+    "correspondence_code": "050506000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0500508000",
+    "name": "City of Ligao",
+    "correspondence_code": "050508000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0500517000",
+    "name": "City of Tabaco",
+    "correspondence_code": "050517000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0501716000",
+    "name": "City of Iriga",
+    "correspondence_code": "051716000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0501724000",
+    "name": "City of Naga",
+    "correspondence_code": "051724000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "ICC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0504111000",
+    "name": "City of Masbate (Capital)",
+    "correspondence_code": "054111000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0506216000",
+    "name": "City of Sorsogon (Capital)",
+    "correspondence_code": "056216000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0601914000",
+    "name": "City of Roxas (Capital)",
+    "correspondence_code": "061914000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0631000000",
+    "name": "City of Iloilo (Capital)",
+    "correspondence_code": "063022000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0603035000",
+    "name": "City of Passi",
+    "correspondence_code": "063035000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0630200000",
+    "name": "City of Bacolod (Capital)",
+    "correspondence_code": "064501000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604502000",
+    "name": "City of Bago",
+    "correspondence_code": "064502000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604504000",
+    "name": "City of Cadiz",
+    "correspondence_code": "064504000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604509000",
+    "name": "City of Escalante",
+    "correspondence_code": "064509000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604510000",
+    "name": "City of Himamaylan",
+    "correspondence_code": "064510000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604515000",
+    "name": "City of Kabankalan",
+    "correspondence_code": "064515000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604516000",
+    "name": "City of La Carlota",
+    "correspondence_code": "064516000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604523000",
+    "name": "City of Sagay",
+    "correspondence_code": "064523000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604524000",
+    "name": "City of San Carlos",
+    "correspondence_code": "064524000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604526000",
+    "name": "City of Silay",
+    "correspondence_code": "064526000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604527000",
+    "name": "City of Sipalay",
+    "correspondence_code": "064527000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604528000",
+    "name": "City of Talisay",
+    "correspondence_code": "064528000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0604531000",
+    "name": "City of Victorias",
+    "correspondence_code": "064531000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0701242000",
+    "name": "City of Tagbilaran (Capital)",
+    "correspondence_code": "071242000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0702211000",
+    "name": "City of Bogo",
+    "correspondence_code": "072211000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "6th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0702214000",
+    "name": "City of Carcar",
+    "correspondence_code": "072214000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0730600000",
+    "name": "City of Cebu (Capital)",
+    "correspondence_code": "072217000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0702223000",
+    "name": "Danao City",
+    "correspondence_code": "072223000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0731100000",
+    "name": "City of Lapu-Lapu",
+    "correspondence_code": "072226000",
+    "geographic_level": "City",
+    "oldName": "Opon",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0731300000",
+    "name": "City of Mandaue",
+    "correspondence_code": "072230000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0702234000",
+    "name": "City of Naga",
+    "correspondence_code": "072234000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0702250000",
+    "name": "City of Talisay",
+    "correspondence_code": "072250000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0702251000",
+    "name": "City of Toledo",
+    "correspondence_code": "072251000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0704604000",
+    "name": "City of Bais",
+    "correspondence_code": "074604000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0704606000",
+    "name": "City of Bayawan",
+    "correspondence_code": "074606000",
+    "geographic_level": "City",
+    "oldName": "Tulong",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0704608000",
+    "name": "City of Canlaon",
+    "correspondence_code": "074608000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0704610000",
+    "name": "City of Dumaguete (Capital)",
+    "correspondence_code": "074610000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0704611000",
+    "name": "City of Guihulngan",
+    "correspondence_code": "074611000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0704621000",
+    "name": "City of Tanjay",
+    "correspondence_code": "074621000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0802604000",
+    "name": "City of Borongan (Capital)",
+    "correspondence_code": "082604000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0803708000",
+    "name": "City of Baybay",
+    "correspondence_code": "083708000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st (as Mun)",
+    "urban_rural": ""
+  },
+  {
+    "code": "0803738000",
+    "name": "Ormoc City",
+    "correspondence_code": "083738000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "ICC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0831600000",
+    "name": "City of Tacloban (Capital)",
+    "correspondence_code": "083747000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0806003000",
+    "name": "City of Calbayog",
+    "correspondence_code": "086003000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0806005000",
+    "name": "City of Catbalogan (Capital)",
+    "correspondence_code": "086005000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0806407000",
+    "name": "City of Maasin (Capital)",
+    "correspondence_code": "086407000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "0907201000",
+    "name": "City of Dapitan",
+    "correspondence_code": "097201000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0907202000",
+    "name": "City of Dipolog (Capital)",
+    "correspondence_code": "097202000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0907322000",
+    "name": "City of Pagadian (Capital)",
+    "correspondence_code": "097322000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "0931700000",
+    "name": "City of Zamboanga",
+    "correspondence_code": "097332000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "0990101000",
+    "name": "City of Isabela",
+    "correspondence_code": "099701000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1001312000",
+    "name": "City of Malaybalay (Capital)",
+    "correspondence_code": "101312000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1001321000",
+    "name": "City of Valencia",
+    "correspondence_code": "101321000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1030900000",
+    "name": "City of Iligan",
+    "correspondence_code": "103504000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st* (reclass 2005)",
+    "urban_rural": ""
+  },
+  {
+    "code": "1004209000",
+    "name": "City of Oroquieta (Capital)",
+    "correspondence_code": "104209000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1004210000",
+    "name": "City of Ozamiz",
+    "correspondence_code": "104210000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1004215000",
+    "name": "City of Tangub",
+    "correspondence_code": "104215000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1030500000",
+    "name": "City of Cagayan De Oro (Capital)",
+    "correspondence_code": "104305000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1004307000",
+    "name": "City of El Salvador",
+    "correspondence_code": "104307000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "6th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1004308000",
+    "name": "City of Gingoog",
+    "correspondence_code": "104308000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1102315000",
+    "name": "City of Panabo",
+    "correspondence_code": "112315000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1102317000",
+    "name": "Island Garden City of Samal",
+    "correspondence_code": "112317000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1102319000",
+    "name": "City of Tagum (Capital)",
+    "correspondence_code": "112319000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1130700000",
+    "name": "City of Davao",
+    "correspondence_code": "112402000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1102403000",
+    "name": "City of Digos (Capital)",
+    "correspondence_code": "112403000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1102509000",
+    "name": "City of Mati (Capital)",
+    "correspondence_code": "112509000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1204704000",
+    "name": "City of Kidapawan (Capital)",
+    "correspondence_code": "124704000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1230800000",
+    "name": "City of General Santos",
+    "correspondence_code": "126303000",
+    "geographic_level": "City",
+    "oldName": "Dadiangas",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1206306000",
+    "name": "City of Koronadal (Capital)",
+    "correspondence_code": "126306000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1206511000",
+    "name": "City of Tacurong",
+    "correspondence_code": "126511000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1380600000",
     "name": "City of Manila",
-    "code": 1380600000,
-    "correspondence_code": 133900000,
-    "income_class": "1st",
-    "population": "1,846,513",
-    "region_code": "1300000000"
+    "correspondence_code": "133900000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "Special",
+    "urban_rural": ""
   },
   {
+    "code": "1380500000",
+    "name": "City of Mandaluyong",
+    "correspondence_code": "137401000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1380700000",
     "name": "City of Marikina",
-    "code": 1380700000,
-    "correspondence_code": 137402000,
+    "correspondence_code": "137402000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
     "income_class": "1st",
-    "population": "456,059",
-    "region_code": "1300000000"
+    "urban_rural": ""
   },
   {
-    "name": "City of Muntinlupa",
-    "code": 1380800000,
-    "correspondence_code": 137603000,
-    "income_class": "1st",
-    "population": "543,445",
-    "region_code": "1300000000"
-  },
-  {
-    "name": "City of Navotas",
-    "code": 1380900000,
-    "correspondence_code": 137503000,
-    "income_class": "1st",
-    "population": "247,543",
-    "region_code": "1300000000"
-  },
-  {
-    "name": "City of Para�aque",
-    "code": 1381000000,
-    "correspondence_code": 137604000,
-    "income_class": "1st",
-    "population": "689,992",
-    "region_code": "1300000000"
-  },
-  {
-    "name": "Pasay City",
-    "code": 1381100000,
-    "correspondence_code": 137605000,
-    "income_class": "1st",
-    "population": "440,656",
-    "region_code": "1300000000"
-  },
-  {
+    "code": "1381200000",
     "name": "City of Pasig",
-    "code": 1381200000,
-    "correspondence_code": 137403000,
+    "correspondence_code": "137403000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
     "income_class": "1st",
-    "population": "803,159",
-    "region_code": "1300000000"
+    "urban_rural": ""
   },
   {
+    "code": "1381300000",
     "name": "Quezon City",
-    "code": 1381300000,
-    "correspondence_code": 137404000,
-    "income_class": "1st",
-    "population": "2,960,048",
-    "region_code": "1300000000"
+    "correspondence_code": "137404000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "Special",
+    "urban_rural": ""
   },
   {
+    "code": "1381400000",
     "name": "City of San Juan",
-    "code": 1381400000,
-    "correspondence_code": 137405000,
+    "correspondence_code": "137405000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
     "income_class": "1st",
-    "population": "126,347",
-    "region_code": "1300000000"
+    "urban_rural": ""
   },
   {
-    "name": "City of Taguig",
-    "code": 1381500000,
-    "correspondence_code": 137607000,
+    "code": "1380100000",
+    "name": "City of Caloocan",
+    "correspondence_code": "137501000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
     "income_class": "1st",
-    "population": "886,722",
-    "region_code": "1300000000"
+    "urban_rural": ""
   },
   {
+    "code": "1380400000",
+    "name": "City of Malabon",
+    "correspondence_code": "137502000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1380900000",
+    "name": "City of Navotas",
+    "correspondence_code": "137503000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "2nd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1381600000",
     "name": "City of Valenzuela",
-    "code": 1381600000,
-    "correspondence_code": 137504000,
+    "correspondence_code": "137504000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
     "income_class": "1st",
-    "population": "714,978",
-    "region_code": "1300000000"
+    "urban_rural": ""
+  },
+  {
+    "code": "1380200000",
+    "name": "City of Las Piñas",
+    "correspondence_code": "137601000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1380300000",
+    "name": "City of Makati",
+    "correspondence_code": "137602000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1380800000",
+    "name": "City of Muntinlupa",
+    "correspondence_code": "137603000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1381000000",
+    "name": "City of Parañaque",
+    "correspondence_code": "137604000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1381100000",
+    "name": "Pasay City",
+    "correspondence_code": "137605000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1381500000",
+    "name": "City of Taguig",
+    "correspondence_code": "137607000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1430300000",
+    "name": "City of Baguio",
+    "correspondence_code": "141102000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1403213000",
+    "name": "City of Tabuk (Capital)",
+    "correspondence_code": "143213000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1630400000",
+    "name": "City of Butuan (Capital)",
+    "correspondence_code": "160202000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "HUC",
+    "income_class": "1st",
+    "urban_rural": ""
+  },
+  {
+    "code": "1600203000",
+    "name": "City of Cabadbaran",
+    "correspondence_code": "160203000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "6th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1600301000",
+    "name": "City of Bayugan",
+    "correspondence_code": "160301000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1606724000",
+    "name": "City of Surigao (Capital)",
+    "correspondence_code": "166724000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1606803000",
+    "name": "City of Bislig",
+    "correspondence_code": "166803000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "3rd",
+    "urban_rural": ""
+  },
+  {
+    "code": "1606819000",
+    "name": "City of Tandag (Capital)",
+    "correspondence_code": "166819000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "5th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1900702000",
+    "name": "City of Lamitan (Capital)",
+    "correspondence_code": "150702000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "6th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1903617000",
+    "name": "City of Marawi (Capital)",
+    "correspondence_code": "153617000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "CC",
+    "income_class": "4th",
+    "urban_rural": ""
+  },
+  {
+    "code": "1903804000",
+    "name": "City of Cotabato",
+    "correspondence_code": "129804000",
+    "geographic_level": "City",
+    "oldName": "",
+    "city_class": "ICC",
+    "income_class": "3rd",
+    "urban_rural": ""
   }
 ]

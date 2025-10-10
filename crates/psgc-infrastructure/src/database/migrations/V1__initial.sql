@@ -21,7 +21,7 @@ CREATE TABLE
         name VARCHAR(255) NOT NULL,
         population BIGINT NOT NULL,
         income_class VARCHAR(255) NOT NULL,
-        region_id UUID REFERENCES regions (id),
+        region_id UUID REFERENCES regions (id) ON DELETE CASCADE,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW (),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW ()
     );
@@ -34,7 +34,7 @@ CREATE TABLE
         correspondence_code VARCHAR(255) NOT NULL,
         name VARCHAR(255) NOT NULL,
         population BIGINT NOT NULL,
-        region_id UUID REFERENCES regions (id),
+        region_id UUID REFERENCES regions (id) ON DELETE CASCADE,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW (),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW ()
     );
@@ -49,21 +49,8 @@ CREATE TABLE
         population BIGINT NOT NULL,
         city_class VARCHAR(255) NOT NULL,
         income_class VARCHAR(255) NOT NULL,
-        region_id UUID REFERENCES regions (id),
-        province_id UUID REFERENCES provinces (id),
-        created_at TIMESTAMPTZ NOT NULL DEFAULT NOW (),
-        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW ()
-    );
-
--- Create sub_municipalities table
-CREATE TABLE
-    sub_municipalities (
-        id UUID PRIMARY KEY,
-        code VARCHAR(255) NOT NULL,
-        correspondence_code VARCHAR(255) NOT NULL,
-        name VARCHAR(255) NOT NULL,
-        population BIGINT NOT NULL,
-        city_id UUID NOT NULL REFERENCES cities (id),
+        region_id UUID REFERENCES regions (id) ON DELETE CASCADE,
+        province_id UUID REFERENCES provinces (id) ON DELETE CASCADE,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW (),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW ()
     );
@@ -77,11 +64,10 @@ CREATE TABLE
         name VARCHAR(255) NOT NULL,
         population BIGINT NOT NULL,
         income_class VARCHAR(255) NOT NULL,
-        region_id UUID REFERENCES regions (id),
-        province_id UUID REFERENCES provinces (id),
-        city_id UUID REFERENCES cities (id),
-        district_id UUID REFERENCES districts (id),
-        sub_municipality_id UUID REFERENCES sub_municipalities (id),
+        parent_municipality_id UUID NULL REFERENCES municipalities (id) ON DELETE CASCADE,
+        region_id UUID REFERENCES regions (id) ON DELETE CASCADE,
+        province_id UUID REFERENCES provinces (id) ON DELETE CASCADE,
+        district_id UUID REFERENCES districts (id) ON DELETE CASCADE,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW (),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW ()
     );
@@ -95,9 +81,9 @@ CREATE TABLE
         name VARCHAR(255) NOT NULL,
         population BIGINT NOT NULL,
         urban_rural VARCHAR(255) NOT NULL,
-        city_id UUID REFERENCES cities (id),
-        municipality_id UUID REFERENCES municipalities (id),
-        district_id UUID REFERENCES districts (id),
+        city_id UUID REFERENCES cities (id) ON DELETE CASCADE,
+        municipality_id UUID REFERENCES municipalities (id) ON DELETE CASCADE,
+        district_id UUID REFERENCES districts (id) ON DELETE CASCADE,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW (),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW ()
     );

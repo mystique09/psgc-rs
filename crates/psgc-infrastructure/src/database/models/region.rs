@@ -1,17 +1,20 @@
-use crate::database::{DatabaseSeedError, generators::uuid_now};
+use crate::database::{
+    DatabaseSeedError,
+    generators::{datetime_utc_now, uuid_now},
+};
 use serde::{Deserialize, Serialize};
 
 #[allow(dead_code)]
 #[derive(Debug, Default, Serialize, Deserialize, bon::Builder)]
 pub struct Region {
-    id: rbatis::rbdc::Uuid,
-    code: String,
-    correspondence_code: String,
-    name: String,
-    designation: String,
-    population: u64,
-    created_at: rbatis::rbdc::DateTime,
-    updated_at: rbatis::rbdc::DateTime,
+    pub id: rbatis::rbdc::Uuid,
+    pub code: String,
+    pub correspondence_code: String,
+    pub name: String,
+    pub designation: String,
+    pub population: u64,
+    pub created_at: rbatis::rbdc::DateTime,
+    pub updated_at: rbatis::rbdc::DateTime,
 }
 
 rbatis::crud!(Region {}, "regions");
@@ -42,8 +45,8 @@ pub async fn seed_regions(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> 
                 .correspondence_code(r.correspondence_code.to_owned())
                 .designation(r.designation.to_owned())
                 .population(r.population)
-                .created_at(rbatis::rbdc::DateTime::utc())
-                .updated_at(rbatis::rbdc::DateTime::utc())
+                .created_at(datetime_utc_now())
+                .updated_at(datetime_utc_now())
                 .build()
         })
         .collect::<Vec<_>>();
