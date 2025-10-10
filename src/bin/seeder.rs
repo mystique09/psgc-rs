@@ -1,4 +1,7 @@
-use psgc_infrastructure::{config::db_config::DatabaseConfig, database::seeder::seeder};
+use psgc_infrastructure::{
+    config::db_config::DatabaseConfig,
+    database::{pool::create_db_pool, seeder::seeder},
+};
 use tracing::info;
 use tracing_log::LogTracer;
 use tracing_subscriber::{Layer, layer::SubscriberExt};
@@ -6,8 +9,9 @@ use tracing_subscriber::{Layer, layer::SubscriberExt};
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     let config = DatabaseConfig::from_env()?;
+    let pool = create_db_pool(&config)?;
 
-    seeder(&config).await?;
+    seeder(pool).await?;
 
     Ok(())
 }
