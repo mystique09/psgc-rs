@@ -1,7 +1,7 @@
 # PSGC-rs
 
-[!NOTE]
-**🚧 WORK IN PROGRESS** - This project is currently under active development. APIs may change, and some features might not be fully implemented yet.
+> [!NOTE]
+> **🚧 WORK IN PROGRESS** - This project is currently under active development. APIs may change, and some features might not be fully implemented yet.
 
 An over-engineered Rust implementation of the Philippine Standard Geographic Code (PSGC) API. This project serves as a rewrite of the original PSGC-API, leveraging Rust's performance and safety features along with modern database technologies.
 
