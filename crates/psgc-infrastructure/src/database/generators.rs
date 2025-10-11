@@ -1,3 +1,7 @@
+use std::str::FromStr;
+
+use chrono::Utc;
+use psgc_domain::models::PaginateResult;
 use rbatis::rbdc::{DateTime, Uuid};
 
 pub fn uuid_now() -> Uuid {
@@ -11,4 +15,44 @@ pub fn datetime_utc_now() -> DateTime {
     let utc = DateTime::utc();
 
     utc
+}
+
+pub trait UuidExt {
+    fn inner(&self) -> uuid::Uuid;
+}
+
+impl UuidExt for rbatis::rbdc::Uuid {
+    fn inner(&self) -> uuid::Uuid {
+        let uuid_str = &self.0;
+        let uuid_val = uuid::Uuid::from_str(uuid_str).unwrap();
+        uuid_val
+    }
+}
+
+pub trait DateTimeUtcExt {
+    fn inner(&self) -> chrono::DateTime<Utc>;
+}
+
+impl DateTimeUtcExt for rbatis::rbdc::DateTime {
+    fn inner(&self) -> chrono::DateTime<Utc> {
+        let datetime = &self.0.to_string();
+        let chrono_datetime = chrono::DateTime::<Utc>::from_str(datetime).unwrap();
+
+        chrono_datetime
+    }
+}
+
+pub trait PageExt<T: Send + Sync> {
+    fn into_domain<E: Send + Sync + From<T>>(self) -> PaginateResult<E>;
+}
+
+impl<T: Send + Sync> PageExt<T> for rbatis::plugin::Page<T> {
+    fn into_domain<E: Send + Sync + From<T>>(self) -> PaginateResult<E> {
+        PaginateResult {
+            records: self.records.into_iter().map(T::into).collect::<Vec<E>>(),
+            total: self.total,
+            page_no: self.page_no,
+            page_size: self.page_size,
+        }
+    }
 }

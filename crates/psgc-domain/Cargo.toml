@@ -7,3 +7,4 @@ edition = "2024"
 bon.workspace = true
 uuid.workspace = true
 chrono.workspace = true
+thiserror.workspace = true

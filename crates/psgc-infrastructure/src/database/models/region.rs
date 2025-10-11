@@ -1,6 +1,6 @@
 use crate::database::{
     DatabaseSeedError,
-    generators::{datetime_utc_now, uuid_now},
+    generators::{DateTimeUtcExt, UuidExt, datetime_utc_now, uuid_now},
 };
 use serde::{Deserialize, Serialize};
 use tracing::info;
@@ -19,6 +19,8 @@ pub struct Region {
 }
 
 rbatis::crud!(Region {}, "regions");
+rbatis::impl_select!(Region {select_by_codename(codename: &str) -> Option => "`where code = #{codename} limit 1`" }, "regions");
+rbatis::impl_select_page!(Region {list_all() => ""}, "regions");
 
 #[derive(Debug, Serialize, Deserialize, bon::Builder)]
 struct RegionData {
@@ -59,4 +61,19 @@ pub async fn seed_regions(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> 
     info!("Added {} regions to database", regions.len());
 
     Ok(())
+}
+
+impl From<Region> for psgc_domain::models::region::Region {
+    fn from(value: Region) -> Self {
+        Self::builder()
+            .id(value.id.inner())
+            .name(value.name)
+            .code(value.code)
+            .correspondence_code(value.correspondence_code)
+            .population(value.population)
+            .designation(value.designation)
+            .created_at(value.created_at.inner())
+            .updated_at(value.updated_at.inner())
+            .build()
+    }
 }
