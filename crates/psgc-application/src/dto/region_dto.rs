@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct RegionDTO {
     pub id: uuid::Uuid,
     pub code: String,

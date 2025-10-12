@@ -8,6 +8,7 @@ serde.workspace = true
 uuid.workspace = true
 chrono.workspace = true
 thiserror.workspace = true
+utoipa.workspace = true
 
 psgc-infrastructure = { path = "../psgc-infrastructure" }
 psgc-domain = { path = "../psgc-domain" }

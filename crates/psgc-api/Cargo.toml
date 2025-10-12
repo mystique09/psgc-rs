@@ -4,3 +4,15 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+serde.workspace = true
+actix.workspace = true
+actix-web.workspace = true
+actix-cors.workspace = true
+actix-multipart.workspace = true
+utoipa-actix-web.workspace = true
+utoipa.workspace = true
+scalar-doc.workspace = true
+tracing.workspace = true
+
+psgc-domain = { path = "../psgc-domain" }
+psgc-application = { path = "../psgc-application" }
