@@ -8,6 +8,7 @@ use psgc_domain::repositories::{
     district_repository::DistrictRepository, municipality_repository::MunicipalityRepository,
     province_repository::ProvinceRepository, region_repository::RegionRepository,
 };
+use utoipa::OpenApi;
 
 use crate::{
     dto::PaginateQueryParam,
@@ -15,7 +16,21 @@ use crate::{
     router::APIState,
 };
 
-#[derive(Debug, utoipa::OpenApi)]
+#[derive(Debug, OpenApi)]
+#[openapi(
+    paths(
+        list_regions,
+    ),
+    components(schemas(
+        RegionDTO,
+        PaginateResponseDTO<RegionDTO>,
+        APIErr
+    )),
+    tags((
+        name = "regions", 
+        description = "Philippine regions management API"
+    ))
+)]
 pub struct RegionAPIDoc;
 
 pub fn build_region_route<
@@ -36,6 +51,21 @@ pub fn build_region_route<
     >)))
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/regions",
+    params(
+        ("page" = Option<u32>, Query, description = "Page number"),
+        ("limit" = Option<u32>, Query, description = "Items per page")
+    ),
+    responses(
+        (status = 200, description = "Successfully retrieved regions", body = PaginateResponseDTO<RegionDTO>),
+        (status = 400, description = "Bad request", body = APIErr),
+        (status = 500, description = "Internal server error", body = APIErr)
+    ),
+    tag = "regions",
+    description = "Get all regions"
+)]
 async fn list_regions<
     R: RegionRepository,
     P: ProvinceRepository,
