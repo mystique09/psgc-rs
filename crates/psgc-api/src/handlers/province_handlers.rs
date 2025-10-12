@@ -6,7 +6,7 @@ use psgc_application::{
     },
     usecases::province_usecases::{
         GetProvinceByCodeUsecase, ListCitiesByProvinceUsecase, ListMunicipalitiesByProvinceUsecase,
-        ListProvincesByRegionUsecase, ListProvincesUsecase,
+        ListProvincesUsecase,
     },
 };
 use psgc_domain::repositories::{
@@ -27,7 +27,6 @@ use crate::{
     paths(
         list_provinces,
         get_province_by_code,
-        get_provinces_by_region,
         get_cities_by_province,
         get_municipalities_by_province,
     ),
@@ -54,20 +53,9 @@ pub fn build_province_route<
     B: BarangayRepository,
 >() -> actix_web::Scope {
     web::scope("/provinces")
+        .service(web::resource("").route(web::get().to(list_provinces::<R, P, M, D, C, B>)))
         .service(
-            web::resource("")
-                .route(web::get().to(list_provinces::<R, P, M, D, C, B>))
-                .route(web::get().to(get_province_by_code::<R, P, M, D, C, B>)),
-        )
-        .service(
-            web::resource("/region/{region_code}").route(web::get().to(get_provinces_by_region::<
-                R,
-                P,
-                M,
-                D,
-                C,
-                B,
-            >)),
+            web::resource("/{code}").route(web::get().to(get_province_by_code::<R, P, M, D, C, B>)),
         )
         .service(
             web::resource("/{province_code}/cities")
@@ -153,44 +141,6 @@ async fn get_province_by_code<
     Ok(Json(APIOk::success_with_message(
         "Province details".to_string(),
         province,
-    )))
-}
-
-#[utoipa::path(
-    get,
-    path = "/api/v1/provinces/region/{region_code}",
-    params(
-        ("region_code" = String, Path, description = "Region code")
-    ),
-    responses(
-        (status = 200, description = "Successfully retrieved provinces", body = Vec<ProvinceDTO>),
-        (status = 400, description = "Bad request", body = APIErr),
-        (status = 500, description = "Internal server error", body = APIErr)
-    ),
-    tag = "provinces",
-    description = "Get provinces by region"
-)]
-async fn get_provinces_by_region<
-    R: RegionRepository,
-    P: ProvinceRepository,
-    M: MunicipalityRepository,
-    D: DistrictRepository,
-    C: CityRepository,
-    B: BarangayRepository,
->(
-    state: web::Data<APIState<R, P, M, D, C, B>>,
-    path: web::Path<String>,
-) -> Result<Json<APIOk<Vec<ProvinceDTO>>>, APIErr> {
-    let province_repository = state.province_repository.clone();
-    let list_provinces_by_region_usecase = ListProvincesByRegionUsecase::new(province_repository);
-
-    let provinces = list_provinces_by_region_usecase
-        .execute(&path.into_inner())
-        .await?;
-
-    Ok(Json(APIOk::success_with_message(
-        "Provinces by region".to_string(),
-        provinces,
     )))
 }
 

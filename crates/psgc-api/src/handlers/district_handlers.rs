@@ -55,10 +55,9 @@ pub fn build_district_route<
     B: BarangayRepository,
 >() -> actix_web::Scope {
     web::scope("/districts")
+        .service(web::resource("").route(web::get().to(list_districts::<R, P, M, D, C, B>)))
         .service(
-            web::resource("")
-                .route(web::get().to(list_districts::<R, P, M, D, C, B>))
-                .route(web::get().to(get_district_by_code::<R, P, M, D, C, B>)),
+            web::resource("/{code}").route(web::get().to(get_district_by_code::<R, P, M, D, C, B>)),
         )
         .service(
             web::resource("/region/{region_code}").route(web::get().to(get_districts_by_region::<

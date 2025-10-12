@@ -50,10 +50,9 @@ pub fn build_city_route<
     B: BarangayRepository,
 >() -> actix_web::Scope {
     web::scope("/cities")
+        .service(web::resource("").route(web::get().to(list_cities::<R, P, M, D, C, B>)))
         .service(
-            web::resource("")
-                .route(web::get().to(list_cities::<R, P, M, D, C, B>))
-                .route(web::get().to(get_city_by_code::<R, P, M, D, C, B>)),
+            web::resource("/{code}").route(web::get().to(get_city_by_code::<R, P, M, D, C, B>)),
         )
         .service(
             web::resource("/region/{region_code}").route(web::get().to(get_cities_by_region::<

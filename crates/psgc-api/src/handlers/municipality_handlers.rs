@@ -52,10 +52,16 @@ pub fn build_municipality_route<
     B: BarangayRepository,
 >() -> actix_web::Scope {
     web::scope("/municipalities")
+        .service(web::resource("").route(web::get().to(list_municipalities::<R, P, M, D, C, B>)))
         .service(
-            web::resource("")
-                .route(web::get().to(list_municipalities::<R, P, M, D, C, B>))
-                .route(web::get().to(get_municipality_by_code::<R, P, M, D, C, B>)),
+            web::resource("/{code}").route(web::get().to(get_municipality_by_code::<
+                R,
+                P,
+                M,
+                D,
+                C,
+                B,
+            >)),
         )
         .service(
             web::resource("/region/{region_code}")
