@@ -3,6 +3,7 @@ use crate::database::{
     generators::{DateTimeUtcExt, RBatisUuidExt, datetime_utc_now, uuid_now},
     helpers::{get_province_map, get_province_map_2, get_region_map},
 };
+use rbatis::executor::Executor;
 use serde::{Deserialize, Serialize};
 use tracing::info;
 
@@ -22,6 +23,35 @@ pub struct Municipality {
     pub updated_at: rbatis::rbdc::DateTime,
 }
 
+impl Municipality {
+    #[rbatis::py_sql(
+        "SELECT m.* FROM municipalities m LEFT JOIN regions r ON m.region_id = r.id WHERE r.code = #{code}"
+    )]
+    async fn list_municipalities_by_region_code(
+        rb: &dyn Executor,
+        code: &str,
+    ) -> Vec<Municipality> {
+    }
+
+    #[rbatis::py_sql(
+        "SELECT m.* FROM municipalities m LEFT JOIN provinces p ON m.province_id = p.id WHERE p.code = #{code}"
+    )]
+    async fn list_municipalities_by_province_code(
+        rb: &dyn Executor,
+        code: &str,
+    ) -> Vec<Municipality> {
+    }
+
+    #[rbatis::py_sql(
+        "SELECT m.* FROM municipalities m LEFT JOIN districts d ON m.district_id = d.id WHERE d.code = #{code}"
+    )]
+    async fn list_municipalities_by_district_code(
+        rb: &dyn Executor,
+        code: &str,
+    ) -> Vec<Municipality> {
+    }
+}
+
 #[derive(Debug, Serialize, Deserialize, bon::Builder)]
 struct MunicipalityData {
     #[serde(rename = "psgc10DigitCode")]
@@ -35,9 +65,7 @@ struct MunicipalityData {
 
 rbatis::crud!(Municipality {}, "municipalities");
 rbatis::impl_select_page!(Municipality {list_municipalities() => ""}, "municipalities");
-rbatis::impl_select!(Municipality {list_municipalities_by_region_code(code: &str) => "`LEFT JOIN regions r ON municipalities.region_id = r.id WHERE r.code = #{code}`"}, "municipalities");
-rbatis::impl_select!(Municipality {list_municipalities_by_province_code(code: &str) => "`LEFT JOIN provinces p ON municipalities.province_id = p.id WHERE p.code = #{code}`"}, "municipalities");
-rbatis::impl_select!(Municipality {list_municipalities_by_district_code(code: &str) => "`LEFT JOIN districts d ON municipalities.district_id = d.id WHERE d.code = #{code}`"}, "municipalities");
+
 rbatis::impl_select!(Municipality {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "municipalities");
 
 pub async fn seed_municipalities(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> {

@@ -2,6 +2,7 @@ use crate::database::{
     generators::{DateTimeUtcExt, RBatisUuidExt, datetime_utc_now},
     helpers::get_region_map,
 };
+use rbatis::executor::Executor;
 use serde::{Deserialize, Serialize};
 use tracing::{info, warn};
 
@@ -19,9 +20,16 @@ pub struct Province {
     pub updated_at: rbatis::rbdc::DateTime,
 }
 
+impl Province {
+    #[rbatis::py_sql(
+        "SELECT p.* FROM provinces p LEFT JOIN regions r ON p.region_id = r.id WHERE r.code = #{code}"
+    )]
+    async fn list_provinces_by_region_code(rb: &dyn Executor, code: &str) -> Vec<Province> {}
+}
+
 rbatis::crud!(Province {}, "provinces");
 rbatis::impl_select_page!(Province {list_provinces() => ""}, "provinces");
-rbatis::impl_select!(Province {list_provinces_by_region_code(code: &str) => "`LEFT JOIN regions r ON provinces.region_id = r.id WHERE r.code = #{code}`"}, "provinces");
+
 rbatis::impl_select!(Province {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "provinces");
 
 #[derive(Debug, Serialize, Deserialize, bon::Builder)]

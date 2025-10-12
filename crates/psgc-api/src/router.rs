@@ -3,7 +3,14 @@ use std::sync::Arc;
 use utoipa::OpenApi as OpenApiT;
 
 use crate::{
-    handlers::region_handlers::{RegionAPIDoc, build_region_route},
+    handlers::{
+        barangay_handlers::{BarangayAPIDoc, build_barangay_route},
+        city_handlers::{CityAPIDoc, build_city_route},
+        district_handlers::{DistrictAPIDoc, build_district_route},
+        municipality_handlers::{MunicipalityAPIDoc, build_municipality_route},
+        province_handlers::{ProvinceAPIDoc, build_province_route},
+        region_handlers::{RegionAPIDoc, build_region_route},
+    },
     response::{APIErr, APIOk},
 };
 use actix_cors::Cors;
@@ -107,14 +114,24 @@ pub fn create_api_router<
         .service(
             web::scope("/api/v1")
                 .route("", get().to(openapi_json))
-                .service(build_region_route::<R, P, M, D, C, B>()),
+                .service(build_region_route::<R, P, M, D, C, B>())
+                .service(build_province_route::<R, P, M, D, C, B>())
+                .service(build_municipality_route::<R, P, M, D, C, B>())
+                .service(build_district_route::<R, P, M, D, C, B>())
+                .service(build_city_route::<R, P, M, D, C, B>())
+                .service(build_barangay_route::<R, P, M, D, C, B>()),
         )
         .into_utoipa_app()
         .split_for_parts();
 
     let mut docs = docs
         .merge_from(PSGCApiDoc::openapi())
-        .merge_from(RegionAPIDoc::openapi());
+        .merge_from(RegionAPIDoc::openapi())
+        .merge_from(ProvinceAPIDoc::openapi())
+        .merge_from(MunicipalityAPIDoc::openapi())
+        .merge_from(DistrictAPIDoc::openapi())
+        .merge_from(CityAPIDoc::openapi())
+        .merge_from(BarangayAPIDoc::openapi());
     docs.info.title = "PSGC API Documentation".to_string();
     docs.info.description = Some("API documentation for the PSGC API".to_string());
     docs.info.version = env!("CARGO_PKG_VERSION").to_string();

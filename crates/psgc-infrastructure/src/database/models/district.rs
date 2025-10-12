@@ -1,4 +1,5 @@
 use crate::database::generators::{DateTimeUtcExt, RBatisUuidExt};
+use rbatis::executor::Executor;
 use serde::{Deserialize, Serialize};
 
 #[allow(dead_code)]
@@ -15,10 +16,21 @@ pub struct District {
     pub updated_at: rbatis::rbdc::DateTime,
 }
 
+impl District {
+    #[rbatis::py_sql(
+        "SELECT d.* FROM districts d LEFT JOIN regions r ON d.region_id = r.id WHERE r.code = #{code}"
+    )]
+    async fn list_districts_by_region_code(rb: &dyn Executor, code: &str) -> Vec<District> {}
+
+    #[rbatis::py_sql(
+        "SELECT d.* FROM districts d LEFT JOIN provinces p ON d.province_id = p.id WHERE p.code = #{code}"
+    )]
+    async fn list_districts_by_province_code(rb: &dyn Executor, code: &str) -> Vec<District> {}
+}
+
 rbatis::crud!(District {}, "districts");
 rbatis::impl_select_page!(District {list_districts() => ""}, "districts");
-rbatis::impl_select!(District {list_districts_by_region_code(code: &str) => "`LEFT JOIN regions r ON districts.region_id = r.id WHERE r.code = #{code}`"}, "districts");
-rbatis::impl_select!(District {list_districts_by_province_code(code: &str) => "`LEFT JOIN provinces p ON districts.province_id = p.id WHERE p.code = #{code}`"}, "districts");
+
 rbatis::impl_select!(District {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "districts");
 
 impl From<District> for psgc_domain::models::district::District {

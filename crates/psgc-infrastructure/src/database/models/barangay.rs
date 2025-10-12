@@ -3,6 +3,7 @@ use crate::database::{
     generators::{DateTimeUtcExt, RBatisUuidExt, datetime_utc_now, uuid_now},
     helpers::{get_city_map, get_municipality_map},
 };
+use rbatis::executor::Executor;
 use serde::{Deserialize, Serialize};
 use tracing::info;
 
@@ -21,6 +22,23 @@ pub struct Barangay {
     pub updated_at: rbatis::rbdc::DateTime,
 }
 
+impl Barangay {
+    #[rbatis::py_sql(
+        "SELECT b.* FROM barangays b LEFT JOIN cities c ON b.city_id = c.id WHERE c.code = #{code}"
+    )]
+    async fn list_barangays_by_city_code(rb: &dyn Executor, code: &str) -> Vec<Barangay> {}
+
+    #[rbatis::py_sql(
+        "SELECT b.* FROM barangays b LEFT JOIN municipalities m ON b.municipality_id = m.id WHERE m.code = #{code}"
+    )]
+    async fn list_barangays_by_municipality_code(rb: &dyn Executor, code: &str) -> Vec<Barangay> {}
+
+    #[rbatis::py_sql(
+        "SELECT b.* FROM barangays b LEFT JOIN districts d ON b.district_id = d.id WHERE d.code = #{code}"
+    )]
+    async fn list_barangays_by_district_code(rb: &dyn Executor, code: &str) -> Vec<Barangay> {}
+}
+
 #[derive(Debug, Serialize, Deserialize, bon::Builder)]
 struct BarangayData {
     #[serde(rename = "psgc10DigitCode")]
@@ -34,9 +52,7 @@ struct BarangayData {
 
 rbatis::crud!(Barangay {}, "barangays");
 rbatis::impl_select_page!(Barangay {list_barangays() => ""}, "barangays");
-rbatis::impl_select!(Barangay {list_barangays_by_city_code(code: &str) => "`LEFT JOIN cities c ON barangays.city_id = c.id WHERE c.code = #{code}`"}, "barangays");
-rbatis::impl_select!(Barangay {list_barangays_by_municipality_code(code: &str) => "`LEFT JOIN municipalities m ON barangays.municipality_id = m.id WHERE m.code = #{code}`"}, "barangays");
-rbatis::impl_select!(Barangay {list_barangays_by_district_code(code: &str) => "`LEFT JOIN districts d ON barangays.district_id = d.id WHERE d.code = #{code}`"}, "barangays");
+
 rbatis::impl_select!(Barangay {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "barangays");
 
 pub async fn seed_barangays(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> {
