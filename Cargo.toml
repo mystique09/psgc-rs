@@ -74,6 +74,10 @@ tracing-subscriber.workspace = true
 tracing-log.workspace = true
 
 [[bin]]
+name = "api"
+path = "src/bin/main.rs"
+
+[[bin]]
 name = "seeder"
 path = "src/bin/seeder.rs"
 

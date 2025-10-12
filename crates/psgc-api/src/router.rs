@@ -189,7 +189,7 @@ async fn openapi_json(docs: Data<Arc<OpenApi>>) -> HttpResponse {
 }
 
 async fn docs() -> HttpResponse {
-    let scalar = scalar_doc::Documentation::new("Reforged API Documentation", "/api/v1")
+    let scalar = scalar_doc::Documentation::new("PSGC API Documentation", "/api/v1")
         .favicon("/favicon.svg", FaviconMimeType::Svg)
         .build()
         .unwrap();
