@@ -24,6 +24,7 @@ ENV MODE=${MODE:-production}
 
 # Copy the pre-built binary from the artifact
 COPY ./api/api ./api
+COPY ./.env.example ./.env
 
 # Make the binary executable
 RUN chmod +x ./api || true
