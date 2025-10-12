@@ -2,10 +2,7 @@ use std::future;
 
 use crate::{
     errors::RepositoryError,
-    models::{
-        PaginateResult, barangay::Barangay, city::City, district::District,
-        municipality::Municipality,
-    },
+    models::{PaginateResult, city::City, district::District, municipality::Municipality},
 };
 
 pub trait DistrictRepository: Send + Sync + 'static {
@@ -18,24 +15,20 @@ pub trait DistrictRepository: Send + Sync + 'static {
         page: u64,
         limit: u64,
     ) -> impl future::Future<Output = Result<PaginateResult<District>, RepositoryError>>;
-    fn list_by_region_id(
+    fn list_by_region_code(
         &self,
-        region_id: &uuid::Uuid,
+        code: &str,
     ) -> impl future::Future<Output = Result<Vec<District>, RepositoryError>>;
-    fn list_by_province_id(
+    fn list_by_province_code(
         &self,
-        province_id: &uuid::Uuid,
+        code: &str,
     ) -> impl future::Future<Output = Result<Vec<District>, RepositoryError>>;
-    fn list_cities_by_district_id(
+    fn list_cities(
         &self,
-        district_id: &uuid::Uuid,
+        code: &str,
     ) -> impl future::Future<Output = Result<Vec<City>, RepositoryError>>;
-    fn list_municipalities_by_district_id(
+    fn list_municipalities(
         &self,
-        district_id: &uuid::Uuid,
+        code: &str,
     ) -> impl future::Future<Output = Result<Vec<Municipality>, RepositoryError>>;
-    fn list_barangays_by_district_id(
-        &self,
-        district_id: &uuid::Uuid,
-    ) -> impl future::Future<Output = Result<Vec<Barangay>, RepositoryError>>;
 }

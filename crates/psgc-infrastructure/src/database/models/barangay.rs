@@ -34,9 +34,9 @@ struct BarangayData {
 
 rbatis::crud!(Barangay {}, "barangays");
 rbatis::impl_select_page!(Barangay {list_barangays() => ""}, "barangays");
-rbatis::impl_select!(Barangay {list_barangays_by_city_id(city_id: &rbatis::rbdc::Uuid) => "`where city_id = #{city_id}`"}, "barangays");
-rbatis::impl_select!(Barangay {list_barangays_by_municipality_id(municipality_id: &rbatis::rbdc::Uuid) => "`where municipality_id = #{municipality_id}`"}, "barangays");
-rbatis::impl_select!(Barangay {list_barangays_by_district_id(district_id: &rbatis::rbdc::Uuid) => "`where district_id = #{district_id}`"}, "barangays");
+rbatis::impl_select!(Barangay {list_barangays_by_city_code(code: &str) => "`LEFT JOIN cities c ON barangays.city_id = c.id WHERE c.code = #{code}`"}, "barangays");
+rbatis::impl_select!(Barangay {list_barangays_by_municipality_code(code: &str) => "`LEFT JOIN municipalities m ON barangays.municipality_id = m.id WHERE m.code = #{code}`"}, "barangays");
+rbatis::impl_select!(Barangay {list_barangays_by_district_code(code: &str) => "`LEFT JOIN districts d ON barangays.district_id = d.id WHERE d.code = #{code}`"}, "barangays");
 rbatis::impl_select!(Barangay {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "barangays");
 
 pub async fn seed_barangays(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> {

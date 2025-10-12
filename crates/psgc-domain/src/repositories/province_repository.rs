@@ -15,16 +15,16 @@ pub trait ProvinceRepository: Send + Sync + 'static {
         page: u64,
         limit: u64,
     ) -> impl future::Future<Output = Result<PaginateResult<Province>, RepositoryError>>;
-    fn list_by_region_id(
+    fn list_by_region_code(
         &self,
-        region_id: &uuid::Uuid,
+        region_code: &str,
     ) -> impl future::Future<Output = Result<Vec<Province>, RepositoryError>>;
-    fn list_cities_by_province_id(
+    fn list_cities(
         &self,
-        province_id: &uuid::Uuid,
+        province_code: &str,
     ) -> impl future::Future<Output = Result<Vec<City>, RepositoryError>>;
-    fn list_municipalities_by_province_id(
+    fn list_municipalities(
         &self,
-        province_id: &uuid::Uuid,
+        province_code: &str,
     ) -> impl future::Future<Output = Result<Vec<Municipality>, RepositoryError>>;
 }

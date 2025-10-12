@@ -7,10 +7,7 @@ use psgc_domain::{
 };
 use rbatis::{PageRequest, RBatis};
 
-use crate::database::{
-    generators::{PageExt, UuidExt},
-    models,
-};
+use crate::database::{generators::PageExt, models};
 
 pub struct PgBarangayRepository {
     db: Arc<RBatis>,
@@ -50,48 +47,35 @@ impl BarangayRepository for PgBarangayRepository {
         Ok(barangays.into_domain::<Barangay>())
     }
 
-    async fn list_by_city_id(
-        &self,
-        city_id: &uuid::Uuid,
-    ) -> Result<Vec<Barangay>, RepositoryError> {
+    async fn list_by_city_code(&self, code: &str) -> Result<Vec<Barangay>, RepositoryError> {
         let mut executor = self.db.acquire().await.unwrap();
-        let db_city_id = city_id.into_db();
         let barangays =
-            models::barangay::Barangay::list_barangays_by_city_id(&mut executor, &db_city_id)
+            models::barangay::Barangay::list_barangays_by_city_code(&mut executor, code)
                 .await
                 .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
         Ok(barangays.into_iter().map(|b| b.into()).collect())
     }
 
-    async fn list_by_municipality_id(
+    async fn list_by_municipality_code(
         &self,
-        municipality_id: &uuid::Uuid,
+        code: &str,
     ) -> Result<Vec<Barangay>, RepositoryError> {
         let mut executor = self.db.acquire().await.unwrap();
-        let db_municipality_id = municipality_id.into_db();
-        let barangays = models::barangay::Barangay::list_barangays_by_municipality_id(
-            &mut executor,
-            &db_municipality_id,
-        )
-        .await
-        .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
+        let barangays =
+            models::barangay::Barangay::list_barangays_by_municipality_code(&mut executor, code)
+                .await
+                .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
         Ok(barangays.into_iter().map(|b| b.into()).collect())
     }
 
-    async fn list_by_district_id(
-        &self,
-        district_id: &uuid::Uuid,
-    ) -> Result<Vec<Barangay>, RepositoryError> {
+    async fn list_by_district_code(&self, code: &str) -> Result<Vec<Barangay>, RepositoryError> {
         let mut executor = self.db.acquire().await.unwrap();
-        let db_district_id = district_id.into_db();
-        let barangays = models::barangay::Barangay::list_barangays_by_district_id(
-            &mut executor,
-            &db_district_id,
-        )
-        .await
-        .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
+        let barangays =
+            models::barangay::Barangay::list_barangays_by_district_code(&mut executor, code)
+                .await
+                .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
         Ok(barangays.into_iter().map(|b| b.into()).collect())
     }

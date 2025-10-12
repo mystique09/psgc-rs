@@ -35,9 +35,9 @@ struct MunicipalityData {
 
 rbatis::crud!(Municipality {}, "municipalities");
 rbatis::impl_select_page!(Municipality {list_municipalities() => ""}, "municipalities");
-rbatis::impl_select!(Municipality {list_municipalities_by_region_id(region_id: &rbatis::rbdc::Uuid) => "`where region_id = #{region_id}`"}, "municipalities");
-rbatis::impl_select!(Municipality {list_municipalities_by_province_id(province_id: &rbatis::rbdc::Uuid) => "`where province_id = #{province_id}`"}, "municipalities");
-rbatis::impl_select!(Municipality {list_municipalities_by_district_id(district_id: &rbatis::rbdc::Uuid) => "`where district_id = #{district_id}`"}, "municipalities");
+rbatis::impl_select!(Municipality {list_municipalities_by_region_code(code: &str) => "`LEFT JOIN regions r ON municipalities.region_id = r.id WHERE r.code = #{code}`"}, "municipalities");
+rbatis::impl_select!(Municipality {list_municipalities_by_province_code(code: &str) => "`LEFT JOIN provinces p ON municipalities.province_id = p.id WHERE p.code = #{code}`"}, "municipalities");
+rbatis::impl_select!(Municipality {list_municipalities_by_district_code(code: &str) => "`LEFT JOIN districts d ON municipalities.district_id = d.id WHERE d.code = #{code}`"}, "municipalities");
 rbatis::impl_select!(Municipality {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "municipalities");
 
 pub async fn seed_municipalities(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> {

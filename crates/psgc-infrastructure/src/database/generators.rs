@@ -29,6 +29,7 @@ impl RBatisUuidExt for rbatis::rbdc::Uuid {
     }
 }
 
+#[allow(unused)]
 pub trait UuidExt {
     fn into_db(&self) -> rbatis::rbdc::Uuid;
 }

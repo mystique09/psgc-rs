@@ -32,8 +32,9 @@ struct CityData {
 
 rbatis::crud!(City {}, "cities");
 rbatis::impl_select_page!(City {list_cities() => ""}, "cities");
-rbatis::impl_select!(City {list_cities_by_region_id(region_id: &rbatis::rbdc::Uuid) => "`where region_id = #{region_id}`"}, "cities");
-rbatis::impl_select!(City {list_cities_by_province_id(province_id: &rbatis::rbdc::Uuid) => "`where province_id = #{province_id}`"}, "cities");
+rbatis::impl_select!(City {list_cities_by_region_code(code: &str) => "`LEFT JOIN regions r ON cities.region_id = r.id WHERE r.code = #{code}`"}, "cities");
+rbatis::impl_select!(City {list_cities_by_province_code(code: &str) => "`LEFT JOIN provinces p ON cities.province_id = p.id WHERE p.code = #{code}`"}, "cities");
+rbatis::impl_select!(City {list_cities_by_district_code(code: &str) => "`LEFT JOIN districts c ON cities.district_id = c.id WHERE c.code = #{code}`"}, "cities");
 rbatis::impl_select!(City {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "cities");
 
 pub async fn seed_cities(db: &rbatis::RBatis) -> Result<(), crate::database::DatabaseSeedError> {

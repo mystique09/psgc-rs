@@ -8,9 +8,9 @@ use crate::{
 };
 
 pub trait RegionRepository: Send + Sync + 'static {
-    fn find_by_codename(
+    fn find_by_code(
         &self,
-        code_name: &str,
+        code: &str,
     ) -> impl future::Future<Output = Result<Region, RepositoryError>>;
     fn list_all(
         &self,
@@ -20,14 +20,14 @@ pub trait RegionRepository: Send + Sync + 'static {
     ) -> impl future::Future<Output = Result<PaginateResult<Region>, RepositoryError>>;
     fn list_provinces(
         &self,
-        region_id: &uuid::Uuid,
+        code: &str,
     ) -> impl future::Future<Output = Result<Vec<Province>, RepositoryError>>;
     fn list_cities(
         &self,
-        region_id: &uuid::Uuid,
+        code: &str,
     ) -> impl future::Future<Output = Result<Vec<City>, RepositoryError>>;
     fn list_municipalities(
         &self,
-        region_id: &uuid::Uuid,
+        code: &str,
     ) -> impl future::Future<Output = Result<Vec<Municipality>, RepositoryError>>;
 }

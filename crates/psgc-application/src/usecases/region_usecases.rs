@@ -11,11 +11,11 @@ use crate::{
 };
 
 #[derive(Debug)]
-pub struct GetRegionByCodenameUsecase<R: RegionRepository> {
+pub struct GetRegionByCodeUsecase<R: RegionRepository> {
     region_repository: Arc<R>,
 }
 
-impl<R: RegionRepository> GetRegionByCodenameUsecase<R> {
+impl<R: RegionRepository> GetRegionByCodeUsecase<R> {
     pub fn new(region_repository: Arc<R>) -> Self {
         Self { region_repository }
     }
@@ -26,7 +26,7 @@ impl<R: RegionRepository> GetRegionByCodenameUsecase<R> {
 
     pub async fn execute(&self, codename: &str) -> Result<RegionDTO, UsecaseError> {
         let region_repository = self.region_repository();
-        let region = region_repository.find_by_codename(codename).await?;
+        let region = region_repository.find_by_code(codename).await?;
 
         Ok(region.into())
     }
@@ -73,9 +73,9 @@ impl<R: RegionRepository> ListProvincesByRegionUsecase<R> {
         self.region_repository.as_ref()
     }
 
-    pub async fn execute(&self, region_id: &uuid::Uuid) -> Result<Vec<ProvinceDTO>, UsecaseError> {
+    pub async fn execute(&self, code: &str) -> Result<Vec<ProvinceDTO>, UsecaseError> {
         let region_repository = self.region_repository();
-        let provinces = region_repository.list_provinces(region_id).await?;
+        let provinces = region_repository.list_provinces(code).await?;
         let province_dtos = provinces.into_iter().map(|p| p.into()).collect();
 
         Ok(province_dtos)
@@ -96,9 +96,9 @@ impl<R: RegionRepository> ListCitiesByRegionUsecase<R> {
         self.region_repository.as_ref()
     }
 
-    pub async fn execute(&self, region_id: &uuid::Uuid) -> Result<Vec<CityDTO>, UsecaseError> {
+    pub async fn execute(&self, code: &str) -> Result<Vec<CityDTO>, UsecaseError> {
         let region_repository = self.region_repository();
-        let cities = region_repository.list_cities(region_id).await?;
+        let cities = region_repository.list_cities(code).await?;
         let city_dtos = cities.into_iter().map(|c| c.into()).collect();
 
         Ok(city_dtos)
@@ -119,12 +119,9 @@ impl<R: RegionRepository> ListMunicipalitiesByRegionUsecase<R> {
         self.region_repository.as_ref()
     }
 
-    pub async fn execute(
-        &self,
-        region_id: &uuid::Uuid,
-    ) -> Result<Vec<MunicipalityDTO>, UsecaseError> {
+    pub async fn execute(&self, code: &str) -> Result<Vec<MunicipalityDTO>, UsecaseError> {
         let region_repository = self.region_repository();
-        let municipalities = region_repository.list_municipalities(region_id).await?;
+        let municipalities = region_repository.list_municipalities(code).await?;
         let municipality_dtos = municipalities.into_iter().map(|m| m.into()).collect();
 
         Ok(municipality_dtos)

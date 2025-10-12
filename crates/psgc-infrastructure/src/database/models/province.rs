@@ -21,7 +21,7 @@ pub struct Province {
 
 rbatis::crud!(Province {}, "provinces");
 rbatis::impl_select_page!(Province {list_provinces() => ""}, "provinces");
-rbatis::impl_select!(Province {list_provinces_by_region_id(region_id: &rbatis::rbdc::Uuid) => "`where region_id = #{region_id}`"}, "provinces");
+rbatis::impl_select!(Province {list_provinces_by_region_code(code: &str) => "`LEFT JOIN regions r ON provinces.region_id = r.id WHERE r.code = #{code}`"}, "provinces");
 rbatis::impl_select!(Province {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "provinces");
 
 #[derive(Debug, Serialize, Deserialize, bon::Builder)]
