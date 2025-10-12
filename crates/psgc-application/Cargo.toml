@@ -4,3 +4,10 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+serde.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+
+psgc-infrastructure = { path = "../psgc-infrastructure" }
+psgc-domain = { path = "../psgc-domain" }

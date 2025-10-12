@@ -1136,6 +1136,14 @@ version = "0.1.0"
 [[package]]
 name = "psgc-application"
 version = "0.1.0"
+dependencies = [
+ "chrono",
+ "psgc-domain",
+ "psgc-infrastructure",
+ "serde",
+ "thiserror 2.0.17",
+ "uuid",
+]
 
 [[package]]
 name = "psgc-domain"
