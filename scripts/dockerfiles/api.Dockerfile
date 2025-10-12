@@ -23,9 +23,9 @@ ENV RUST_BACKTRACE=${RUST_BACKTRACE:-1}
 ENV MODE=${MODE:-production}
 
 # Copy the pre-built binary from the artifact
-COPY ./api ./api
+COPY ./api/api ./api
 
 # Make the binary executable
-RUN chmod +x ./api
+RUN chmod +x ./api || true
 
 CMD ["./api"]
