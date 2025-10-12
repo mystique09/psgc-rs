@@ -25,10 +25,10 @@ jobs:
           path: ~/.cargo
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-      - name: Build tuono
+      - name: Build api
         run: cargo build --release --all
 
-      - name: Upload tuono artifact
+      - name: Upload api artifact
         uses: actions/upload-artifact@v4
         with:
           name: api
