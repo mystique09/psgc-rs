@@ -132,8 +132,8 @@ pub fn create_api_router<
         .merge_from(DistrictAPIDoc::openapi())
         .merge_from(CityAPIDoc::openapi())
         .merge_from(BarangayAPIDoc::openapi());
-    docs.info.title = "PSGC API Documentation".to_string();
-    docs.info.description = Some("API documentation for the PSGC API".to_string());
+    docs.info.title = "PSGC-rs API Documentation".to_string();
+    docs.info.description = Some("API documentation for the PSGC-rs API".to_string());
     docs.info.version = env!("CARGO_PKG_VERSION").to_string();
 
     let docs = Arc::new(docs);
@@ -164,7 +164,7 @@ async fn index<
         .unwrap_or("http://localhost:3000");
 
     let message = format!(
-        "This is the API for PSGC, please visit <a href='{origin}'>{origin}</a>. For documentation, visit <a href='/docs'>{origin}/docs</a>"
+        "This is the API for PSGC-rs, please visit <a href='{origin}'>{origin}</a>. For documentation, visit <a href='/docs'>{origin}/docs</a>"
     );
 
     Ok(Json(APIOk::builder().message(message).build()))
@@ -206,7 +206,7 @@ async fn openapi_json(docs: Data<Arc<OpenApi>>) -> HttpResponse {
 }
 
 async fn docs() -> HttpResponse {
-    let scalar = scalar_doc::Documentation::new("PSGC API Documentation", "/api/v1")
+    let scalar = scalar_doc::Documentation::new("PSGC-rs API Documentation", "/api/v1")
         .favicon("/favicon.svg", FaviconMimeType::Svg)
         .build()
         .unwrap();
