@@ -6,7 +6,7 @@ use tracing_subscriber::{Layer, layer::SubscriberExt};
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     setup_tracing();
-    
+
     info!("Migrating database...");
 
     let config = DatabaseConfig::from_env()?;

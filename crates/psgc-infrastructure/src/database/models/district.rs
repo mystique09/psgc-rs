@@ -1,3 +1,4 @@
+use crate::database::generators::{DateTimeUtcExt, RBatisUuidExt};
 use serde::{Deserialize, Serialize};
 
 #[allow(dead_code)]
@@ -19,5 +20,25 @@ rbatis::impl_select_page!(District {list_districts() => ""}, "districts");
 rbatis::impl_select!(District {list_districts_by_region_id(region_id: &rbatis::rbdc::Uuid) => "`where region_id = #{region_id}`"}, "districts");
 rbatis::impl_select!(District {list_districts_by_province_id(province_id: &rbatis::rbdc::Uuid) => "`where province_id = #{province_id}`"}, "districts");
 rbatis::impl_select!(District {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "districts");
+
+impl From<District> for psgc_domain::models::district::District {
+    fn from(value: District) -> Self {
+        let region_id = value
+            .region_id
+            .map(|id| id.inner())
+            .unwrap_or_else(uuid::Uuid::new_v4);
+
+        Self::builder()
+            .id(value.id.inner())
+            .name(value.name)
+            .code(value.code)
+            .correspondence_code(value.correspondence_code)
+            .population(value.population)
+            .region_id(region_id)
+            .created_at(value.created_at.inner())
+            .updated_at(value.updated_at.inner())
+            .build()
+    }
+}
 
 // TODO: add seeder
