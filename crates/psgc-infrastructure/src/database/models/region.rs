@@ -1,6 +1,6 @@
 use crate::database::{
     DatabaseSeedError,
-    generators::{DateTimeUtcExt, UuidExt, datetime_utc_now, uuid_now},
+    generators::{DateTimeUtcExt, RBatisUuidExt, datetime_utc_now, uuid_now},
 };
 use serde::{Deserialize, Serialize};
 use tracing::info;
@@ -19,7 +19,7 @@ pub struct Region {
 }
 
 rbatis::crud!(Region {}, "regions");
-rbatis::impl_select!(Region {select_by_codename(codename: &str) -> Option => "`where code = #{codename} limit 1`" }, "regions");
+rbatis::impl_select!(Region {select_by_codename(codename: &str) -> Option => "`where code = #{codename} limit 1`"}, "regions");
 rbatis::impl_select_page!(Region {list_all() => ""}, "regions");
 
 #[derive(Debug, Serialize, Deserialize, bon::Builder)]

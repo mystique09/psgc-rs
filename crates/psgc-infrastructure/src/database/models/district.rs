@@ -15,5 +15,9 @@ pub struct District {
 }
 
 rbatis::crud!(District {}, "districts");
+rbatis::impl_select_page!(District {list_districts() => ""}, "districts");
+rbatis::impl_select!(District {list_districts_by_region_id(region_id: &rbatis::rbdc::Uuid) => "`where region_id = #{region_id}`"}, "districts");
+rbatis::impl_select!(District {list_districts_by_province_id(province_id: &rbatis::rbdc::Uuid) => "`where province_id = #{province_id}`"}, "districts");
+rbatis::impl_select!(District {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "districts");
 
 // TODO: add seeder

@@ -17,15 +17,27 @@ pub fn datetime_utc_now() -> DateTime {
     utc
 }
 
-pub trait UuidExt {
+pub trait RBatisUuidExt {
     fn inner(&self) -> uuid::Uuid;
 }
 
-impl UuidExt for rbatis::rbdc::Uuid {
+impl RBatisUuidExt for rbatis::rbdc::Uuid {
     fn inner(&self) -> uuid::Uuid {
         let uuid_str = &self.0;
         let uuid_val = uuid::Uuid::from_str(uuid_str).unwrap();
         uuid_val
+    }
+}
+
+pub trait UuidExt {
+    fn into_db(&self) -> rbatis::rbdc::Uuid;
+}
+
+impl UuidExt for uuid::Uuid {
+    fn into_db(&self) -> rbatis::rbdc::Uuid {
+        let uuid_str = self.to_string();
+        let uuid = rbatis::rbdc::Uuid::from_str(&uuid_str).unwrap();
+        uuid
     }
 }
 

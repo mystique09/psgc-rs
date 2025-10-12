@@ -1,4 +1,7 @@
-use crate::database::{generators::datetime_utc_now, helpers::get_region_map};
+use crate::database::{
+    generators::{DateTimeUtcExt, RBatisUuidExt, datetime_utc_now},
+    helpers::get_region_map,
+};
 use serde::{Deserialize, Serialize};
 use tracing::{info, warn};
 
@@ -17,6 +20,9 @@ pub struct Province {
 }
 
 rbatis::crud!(Province {}, "provinces");
+rbatis::impl_select_page!(Province {list_provinces() => ""}, "provinces");
+rbatis::impl_select!(Province {list_provinces_by_region_id(region_id: &rbatis::rbdc::Uuid) => "`where region_id = #{region_id}`"}, "provinces");
+rbatis::impl_select!(Province {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "provinces");
 
 #[derive(Debug, Serialize, Deserialize, bon::Builder)]
 struct ProvinceData {
@@ -88,4 +94,25 @@ pub async fn seed_provinces(db: &rbatis::RBatis) -> Result<(), crate::database::
     info!("Added {} provinces to database", provinces.len());
 
     Ok(())
+}
+
+impl From<Province> for psgc_domain::models::province::Province {
+    fn from(value: Province) -> Self {
+        let region_id = value
+            .region_id
+            .map(|id| id.inner())
+            .unwrap_or_else(uuid::Uuid::new_v4);
+
+        Self::builder()
+            .id(value.id.inner())
+            .name(value.name)
+            .code(value.code)
+            .correspondence_code(value.correspondence_code)
+            .population(value.population)
+            .income_class(value.income_class)
+            .region_id(region_id)
+            .created_at(value.created_at.inner())
+            .updated_at(value.updated_at.inner())
+            .build()
+    }
 }

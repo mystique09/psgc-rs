@@ -1,6 +1,6 @@
 use crate::database::{
     DatabaseSeedError,
-    generators::{datetime_utc_now, uuid_now},
+    generators::{DateTimeUtcExt, RBatisUuidExt, datetime_utc_now, uuid_now},
     helpers::{get_city_map, get_municipality_map},
 };
 use serde::{Deserialize, Serialize};
@@ -33,6 +33,11 @@ struct BarangayData {
 }
 
 rbatis::crud!(Barangay {}, "barangays");
+rbatis::impl_select_page!(Barangay {list_barangays() => ""}, "barangays");
+rbatis::impl_select!(Barangay {list_barangays_by_city_id(city_id: &rbatis::rbdc::Uuid) => "`where city_id = #{city_id}`"}, "barangays");
+rbatis::impl_select!(Barangay {list_barangays_by_municipality_id(municipality_id: &rbatis::rbdc::Uuid) => "`where municipality_id = #{municipality_id}`"}, "barangays");
+rbatis::impl_select!(Barangay {list_barangays_by_district_id(district_id: &rbatis::rbdc::Uuid) => "`where district_id = #{district_id}`"}, "barangays");
+rbatis::impl_select!(Barangay {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "barangays");
 
 pub async fn seed_barangays(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> {
     info!("Seeding barangays...");
@@ -91,4 +96,22 @@ pub async fn seed_barangays(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError
     info!("Added {} barangays to database", barangays.len());
 
     Ok(())
+}
+
+impl From<Barangay> for psgc_domain::models::barangay::Barangay {
+    fn from(value: Barangay) -> Self {
+        Self::builder()
+            .id(value.id.inner())
+            .name(value.name)
+            .code(value.code)
+            .correspondence_code(value.correspondence_code)
+            .population(value.population)
+            .urban_rural(value.urban_rural)
+            .maybe_city_id(value.city_id.map(|id| id.inner()))
+            .maybe_municipality_id(value.municipality_id.map(|id| id.inner()))
+            .maybe_district_id(value.district_id.map(|id| id.inner()))
+            .created_at(value.created_at.inner())
+            .updated_at(value.updated_at.inner())
+            .build()
+    }
 }

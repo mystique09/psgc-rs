@@ -1,5 +1,5 @@
 use crate::database::{
-    generators::{datetime_utc_now, uuid_now},
+    generators::{DateTimeUtcExt, RBatisUuidExt, datetime_utc_now, uuid_now},
     helpers::{get_province_map, get_province_map_2, get_region_map},
 };
 use serde::{Deserialize, Serialize};
@@ -31,6 +31,10 @@ struct CityData {
 }
 
 rbatis::crud!(City {}, "cities");
+rbatis::impl_select_page!(City {list_cities() => ""}, "cities");
+rbatis::impl_select!(City {list_cities_by_region_id(region_id: &rbatis::rbdc::Uuid) => "`where region_id = #{region_id}`"}, "cities");
+rbatis::impl_select!(City {list_cities_by_province_id(province_id: &rbatis::rbdc::Uuid) => "`where province_id = #{province_id}`"}, "cities");
+rbatis::impl_select!(City {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "cities");
 
 pub async fn seed_cities(db: &rbatis::RBatis) -> Result<(), crate::database::DatabaseSeedError> {
     info!("Seeding cities...");
@@ -94,4 +98,22 @@ pub async fn seed_cities(db: &rbatis::RBatis) -> Result<(), crate::database::Dat
     info!("Added {} cities to database", cities.len());
 
     Ok(())
+}
+
+impl From<City> for psgc_domain::models::city::City {
+    fn from(value: City) -> Self {
+        Self::builder()
+            .id(value.id.inner())
+            .name(value.name)
+            .code(value.code)
+            .correspondence_code(value.correspondence_code)
+            .population(value.population)
+            .city_class(value.city_class)
+            .income_class(value.income_class)
+            .maybe_region_id(value.region_id.map(|id| id.inner()))
+            .maybe_province_id(value.province_id.map(|id| id.inner()))
+            .created_at(value.created_at.inner())
+            .updated_at(value.updated_at.inner())
+            .build()
+    }
 }

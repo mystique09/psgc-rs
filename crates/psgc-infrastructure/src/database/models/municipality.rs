@@ -1,6 +1,6 @@
 use crate::database::{
     DatabaseSeedError,
-    generators::{datetime_utc_now, uuid_now},
+    generators::{DateTimeUtcExt, RBatisUuidExt, datetime_utc_now, uuid_now},
     helpers::{get_province_map, get_province_map_2, get_region_map},
 };
 use serde::{Deserialize, Serialize};
@@ -34,6 +34,11 @@ struct MunicipalityData {
 }
 
 rbatis::crud!(Municipality {}, "municipalities");
+rbatis::impl_select_page!(Municipality {list_municipalities() => ""}, "municipalities");
+rbatis::impl_select!(Municipality {list_municipalities_by_region_id(region_id: &rbatis::rbdc::Uuid) => "`where region_id = #{region_id}`"}, "municipalities");
+rbatis::impl_select!(Municipality {list_municipalities_by_province_id(province_id: &rbatis::rbdc::Uuid) => "`where province_id = #{province_id}`"}, "municipalities");
+rbatis::impl_select!(Municipality {list_municipalities_by_district_id(district_id: &rbatis::rbdc::Uuid) => "`where district_id = #{district_id}`"}, "municipalities");
+rbatis::impl_select!(Municipality {select_by_code(code: &str) -> Option => "`where code = #{code} limit 1`"}, "municipalities");
 
 pub async fn seed_municipalities(db: &rbatis::RBatis) -> Result<(), DatabaseSeedError> {
     info!("Seeding municipalities...");
@@ -92,4 +97,23 @@ pub async fn seed_municipalities(db: &rbatis::RBatis) -> Result<(), DatabaseSeed
     info!("Added {} municipalities to database", municipalities.len());
 
     Ok(())
+}
+
+impl From<Municipality> for psgc_domain::models::municipality::Municipality {
+    fn from(value: Municipality) -> Self {
+        Self::builder()
+            .id(value.id.inner())
+            .name(value.name)
+            .code(value.code)
+            .correspondence_code(value.correspondence_code)
+            .population(value.population)
+            .income_class(value.income_class)
+            .maybe_region_id(value.region_id.map(|id| id.inner()))
+            .maybe_province_id(value.province_id.map(|id| id.inner()))
+            .maybe_district_id(value.district_id.map(|id| id.inner()))
+            .maybe_sub_municipality_id(value.sub_municipality_id.map(|id| id.inner()))
+            .created_at(value.created_at.inner())
+            .updated_at(value.updated_at.inner())
+            .build()
+    }
 }
