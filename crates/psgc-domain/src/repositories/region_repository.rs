@@ -14,7 +14,6 @@ pub trait RegionRepository: Send + Sync + 'static {
     ) -> impl future::Future<Output = Result<Region, RepositoryError>>;
     fn list_all(
         &self,
-        region_id: &uuid::Uuid,
         page: u64,
         limit: u64,
     ) -> impl future::Future<Output = Result<PaginateResult<Region>, RepositoryError>>;

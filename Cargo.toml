@@ -64,7 +64,9 @@ features = ["tokio-postgres"]
 
 [dependencies]
 psgc-infrastructure = { path = "crates/psgc-infrastructure" }
+psgc-api = { path = "crates/psgc-api" }
 
+actix-web.workspace = true
 anyhow.workspace = true
 tokio.workspace = true
 tracing.workspace = true

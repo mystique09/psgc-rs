@@ -35,7 +35,6 @@ impl RegionRepository for PgRegionRepository {
 
     async fn list_all(
         &self,
-        region_id: &uuid::Uuid,
         page: u64,
         limit: u64,
     ) -> Result<PaginateResult<Region>, RepositoryError> {

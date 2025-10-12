@@ -48,12 +48,11 @@ impl<R: RegionRepository> ListRegionsUsecase<R> {
 
     pub async fn execute(
         &self,
-        region_id: &uuid::Uuid,
         page: u64,
         limit: u64,
     ) -> Result<PaginateResponseDTO<RegionDTO>, UsecaseError> {
         let region_repository = self.region_repository();
-        let regions = region_repository.list_all(region_id, page, limit).await?;
+        let regions = region_repository.list_all(page, limit).await?;
 
         Ok(regions.into())
     }

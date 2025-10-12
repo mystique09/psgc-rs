@@ -2007,7 +2007,9 @@ dependencies = [
 name = "psgc-rs"
 version = "0.1.0"
 dependencies = [
+ "actix-web",
  "anyhow",
+ "psgc-api",
  "psgc-infrastructure",
  "tokio",
  "tracing",

@@ -3,7 +3,7 @@ use std::sync::Arc;
 use utoipa::OpenApi as OpenApiT;
 
 use crate::{
-    handlers::region_handlers::RegionAPIDoc,
+    handlers::region_handlers::{RegionAPIDoc, build_region_route},
     response::{APIErr, APIOk},
 };
 use actix_cors::Cors;
@@ -104,7 +104,11 @@ pub fn create_api_router<
         .service(web::resource("/favicon.svg").route(get().to(favicon)))
         .service(web::resource("/").route(get().to(index::<R, P, M, D, C, B>)))
         .service(web::resource("/docs").route(get().to(docs)))
-        .service(web::scope("/api/v1").route("", get().to(openapi_json)))
+        .service(
+            web::scope("/api/v1")
+                .route("", get().to(openapi_json))
+                .service(build_region_route::<R, P, M, D, C, B>()),
+        )
         .into_utoipa_app()
         .split_for_parts();
 
