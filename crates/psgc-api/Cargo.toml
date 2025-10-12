@@ -9,6 +9,7 @@ actix.workspace = true
 actix-web.workspace = true
 actix-cors.workspace = true
 actix-multipart.workspace = true
+actix-governor.workspace = true
 utoipa-actix-web.workspace = true
 utoipa.workspace = true
 scalar-doc.workspace = true
