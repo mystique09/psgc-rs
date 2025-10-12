@@ -5,8 +5,8 @@ use psgc_application::{
         municipality_dto::MunicipalityDTO,
     },
     usecases::district_usecases::{
-        GetDistrictByCodeUsecase, ListCitiesByDistrictUsecase, ListDistrictsByProvinceUsecase,
-        ListDistrictsByRegionUsecase, ListDistrictsUsecase, ListMunicipalitiesByDistrictUsecase,
+        GetDistrictByCodeUsecase, ListCitiesByDistrictUsecase, ListDistrictsUsecase,
+        ListMunicipalitiesByDistrictUsecase,
     },
 };
 use psgc_domain::repositories::{
@@ -27,8 +27,6 @@ use crate::{
     paths(
         list_districts,
         get_district_by_code,
-        get_districts_by_region,
-        get_districts_by_province,
         get_cities_by_district,
         get_municipalities_by_district,
     ),
@@ -58,20 +56,6 @@ pub fn build_district_route<
         .service(web::resource("").route(web::get().to(list_districts::<R, P, M, D, C, B>)))
         .service(
             web::resource("/{code}").route(web::get().to(get_district_by_code::<R, P, M, D, C, B>)),
-        )
-        .service(
-            web::resource("/region/{region_code}").route(web::get().to(get_districts_by_region::<
-                R,
-                P,
-                M,
-                D,
-                C,
-                B,
-            >)),
-        )
-        .service(
-            web::resource("/province/{province_code}")
-                .route(web::get().to(get_districts_by_province::<R, P, M, D, C, B>)),
         )
         .service(
             web::resource("/{district_code}/cities")
@@ -157,83 +141,6 @@ async fn get_district_by_code<
     Ok(Json(APIOk::success_with_message(
         "District details".to_string(),
         district,
-    )))
-}
-
-#[utoipa::path(
-    get,
-    path = "/api/v1/districts/region/{region_code}",
-    params(
-        ("region_code" = String, Path, description = "Region code")
-    ),
-    responses(
-        (status = 200, description = "Successfully retrieved districts", body = Vec<DistrictDTO>),
-        (status = 400, description = "Bad request", body = APIErr),
-        (status = 500, description = "Internal server error", body = APIErr)
-    ),
-    tag = "districts",
-    description = "Get districts by region"
-)]
-async fn get_districts_by_region<
-    R: RegionRepository,
-    P: ProvinceRepository,
-    M: MunicipalityRepository,
-    D: DistrictRepository,
-    C: CityRepository,
-    B: BarangayRepository,
->(
-    state: web::Data<APIState<R, P, M, D, C, B>>,
-    path: web::Path<String>,
-) -> Result<Json<APIOk<Vec<DistrictDTO>>>, APIErr> {
-    let district_repository = state.district_repository.clone();
-    let list_districts_by_region_usecase = ListDistrictsByRegionUsecase::new(district_repository);
-
-    let districts = list_districts_by_region_usecase
-        .execute(&path.into_inner())
-        .await?;
-
-    Ok(Json(APIOk::success_with_message(
-        "Districts by region".to_string(),
-        districts,
-    )))
-}
-
-#[utoipa::path(
-    get,
-    path = "/api/v1/districts/province/{province_code}",
-    params(
-        ("province_code" = String, Path, description = "Province code")
-    ),
-    responses(
-        (status = 200, description = "Successfully retrieved districts", body = Vec<DistrictDTO>),
-        (status = 400, description = "Bad request", body = APIErr),
-        (status = 500, description = "Internal server error", body = APIErr)
-    ),
-    tag = "districts",
-    description = "Get districts by province"
-)]
-async fn get_districts_by_province<
-    R: RegionRepository,
-    P: ProvinceRepository,
-    M: MunicipalityRepository,
-    D: DistrictRepository,
-    C: CityRepository,
-    B: BarangayRepository,
->(
-    state: web::Data<APIState<R, P, M, D, C, B>>,
-    path: web::Path<String>,
-) -> Result<Json<APIOk<Vec<DistrictDTO>>>, APIErr> {
-    let district_repository = state.district_repository.clone();
-    let list_districts_by_province_usecase =
-        ListDistrictsByProvinceUsecase::new(district_repository);
-
-    let districts = list_districts_by_province_usecase
-        .execute(&path.into_inner())
-        .await?;
-
-    Ok(Json(APIOk::success_with_message(
-        "Districts by province".to_string(),
-        districts,
     )))
 }
 

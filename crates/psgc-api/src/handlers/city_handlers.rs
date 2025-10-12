@@ -2,8 +2,7 @@ use actix_web::web::{self, Json, Query};
 use psgc_application::{
     dto::{PaginateResponseDTO, barangay_dto::BarangayDTO, city_dto::CityDTO},
     usecases::city_usecases::{
-        GetCityByCodeUsecase, ListBarangaysByCityUsecase, ListCitiesByProvinceUsecase,
-        ListCitiesByRegionUsecase, ListCitiesUsecase,
+        GetCityByCodeUsecase, ListBarangaysByCityUsecase, ListCitiesUsecase,
     },
 };
 use psgc_domain::repositories::{
@@ -24,8 +23,6 @@ use crate::{
     paths(
         list_cities,
         get_city_by_code,
-        get_cities_by_region,
-        get_cities_by_province,
         get_barangays_by_city,
     ),
     components(schemas(
@@ -53,20 +50,6 @@ pub fn build_city_route<
         .service(web::resource("").route(web::get().to(list_cities::<R, P, M, D, C, B>)))
         .service(
             web::resource("/{code}").route(web::get().to(get_city_by_code::<R, P, M, D, C, B>)),
-        )
-        .service(
-            web::resource("/region/{region_code}").route(web::get().to(get_cities_by_region::<
-                R,
-                P,
-                M,
-                D,
-                C,
-                B,
-            >)),
-        )
-        .service(
-            web::resource("/province/{province_code}")
-                .route(web::get().to(get_cities_by_province::<R, P, M, D, C, B>)),
         )
         .service(
             web::resource("/{city_code}/barangays").route(web::get().to(get_barangays_by_city::<
@@ -152,82 +135,6 @@ async fn get_city_by_code<
     Ok(Json(APIOk::success_with_message(
         "City details".to_string(),
         city,
-    )))
-}
-
-#[utoipa::path(
-    get,
-    path = "/api/v1/cities/region/{region_code}",
-    params(
-        ("region_code" = String, Path, description = "Region code")
-    ),
-    responses(
-        (status = 200, description = "Successfully retrieved cities", body = Vec<CityDTO>),
-        (status = 400, description = "Bad request", body = APIErr),
-        (status = 500, description = "Internal server error", body = APIErr)
-    ),
-    tag = "cities",
-    description = "Get cities by region"
-)]
-async fn get_cities_by_region<
-    R: RegionRepository,
-    P: ProvinceRepository,
-    M: MunicipalityRepository,
-    D: DistrictRepository,
-    C: CityRepository,
-    B: BarangayRepository,
->(
-    state: web::Data<APIState<R, P, M, D, C, B>>,
-    path: web::Path<String>,
-) -> Result<Json<APIOk<Vec<CityDTO>>>, APIErr> {
-    let city_repository = state.city_repository.clone();
-    let list_cities_by_region_usecase = ListCitiesByRegionUsecase::new(city_repository);
-
-    let cities = list_cities_by_region_usecase
-        .execute(&path.into_inner())
-        .await?;
-
-    Ok(Json(APIOk::success_with_message(
-        "Cities by region".to_string(),
-        cities,
-    )))
-}
-
-#[utoipa::path(
-    get,
-    path = "/api/v1/cities/province/{province_code}",
-    params(
-        ("province_code" = String, Path, description = "Province code")
-    ),
-    responses(
-        (status = 200, description = "Successfully retrieved cities", body = Vec<CityDTO>),
-        (status = 400, description = "Bad request", body = APIErr),
-        (status = 500, description = "Internal server error", body = APIErr)
-    ),
-    tag = "cities",
-    description = "Get cities by province"
-)]
-async fn get_cities_by_province<
-    R: RegionRepository,
-    P: ProvinceRepository,
-    M: MunicipalityRepository,
-    D: DistrictRepository,
-    C: CityRepository,
-    B: BarangayRepository,
->(
-    state: web::Data<APIState<R, P, M, D, C, B>>,
-    path: web::Path<String>,
-) -> Result<Json<APIOk<Vec<CityDTO>>>, APIErr> {
-    let city_repository = state.city_repository.clone();
-    let list_cities_by_province_usecase = ListCitiesByProvinceUsecase::new(city_repository);
-
-    let cities = list_cities_by_province_usecase
-        .execute(&path.into_inner())
-        .await?;
-
-    Ok(Json(APIOk::success_with_message(
-        "Cities by province".to_string(),
-        cities,
     )))
 }
 
