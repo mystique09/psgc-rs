@@ -23,11 +23,7 @@ ENV RUST_BACKTRACE=${RUST_BACKTRACE:-1}
 ENV MODE=${MODE:-production}
 
 # Copy the pre-built binary from the artifact
-
-COPY ./psgc-rs/api ./api
-
-RUN ls -la ./
-RUN ls -la ./psgc-rs
+COPY ./api ./api
 
 # Make the binary executable
 RUN chmod +x ./api
