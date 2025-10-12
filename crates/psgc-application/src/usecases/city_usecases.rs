@@ -7,7 +7,7 @@ use crate::{
     errors::UsecaseError,
 };
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct GetCityByCodeUsecase<C: CityRepository> {
     city_repository: Arc<C>,
 }
@@ -29,7 +29,7 @@ impl<C: CityRepository> GetCityByCodeUsecase<C> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListCitiesUsecase<C: CityRepository> {
     city_repository: Arc<C>,
 }
@@ -55,7 +55,7 @@ impl<C: CityRepository> ListCitiesUsecase<C> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListCitiesByRegionUsecase<C: CityRepository> {
     city_repository: Arc<C>,
 }
@@ -78,7 +78,7 @@ impl<C: CityRepository> ListCitiesByRegionUsecase<C> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListCitiesByProvinceUsecase<C: CityRepository> {
     city_repository: Arc<C>,
 }
@@ -101,7 +101,7 @@ impl<C: CityRepository> ListCitiesByProvinceUsecase<C> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListBarangaysByCityUsecase<C: CityRepository> {
     city_repository: Arc<C>,
 }

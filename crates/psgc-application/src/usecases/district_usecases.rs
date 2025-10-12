@@ -10,7 +10,7 @@ use crate::{
     errors::UsecaseError,
 };
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct GetDistrictByCodeUsecase<D: DistrictRepository> {
     district_repository: Arc<D>,
 }
@@ -34,7 +34,7 @@ impl<D: DistrictRepository> GetDistrictByCodeUsecase<D> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListDistrictsUsecase<D: DistrictRepository> {
     district_repository: Arc<D>,
 }
@@ -62,7 +62,7 @@ impl<D: DistrictRepository> ListDistrictsUsecase<D> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListDistrictsByRegionUsecase<D: DistrictRepository> {
     district_repository: Arc<D>,
 }
@@ -87,7 +87,7 @@ impl<D: DistrictRepository> ListDistrictsByRegionUsecase<D> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListDistrictsByProvinceUsecase<D: DistrictRepository> {
     district_repository: Arc<D>,
 }
@@ -114,7 +114,7 @@ impl<D: DistrictRepository> ListDistrictsByProvinceUsecase<D> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListCitiesByDistrictUsecase<D: DistrictRepository> {
     district_repository: Arc<D>,
 }
@@ -139,7 +139,7 @@ impl<D: DistrictRepository> ListCitiesByDistrictUsecase<D> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, bon::Builder)]
 pub struct ListMunicipalitiesByDistrictUsecase<D: DistrictRepository> {
     district_repository: Arc<D>,
 }

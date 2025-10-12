@@ -1861,10 +1861,12 @@ dependencies = [
  "actix-cors",
  "actix-multipart",
  "actix-web",
+ "bon",
  "psgc-application",
  "psgc-domain",
  "scalar-doc",
  "serde",
+ "thiserror 2.0.17",
  "tracing",
  "utoipa",
  "utoipa-actix-web",
@@ -1874,6 +1876,7 @@ dependencies = [
 name = "psgc-application"
 version = "0.1.0"
 dependencies = [
+ "bon",
  "chrono",
  "psgc-domain",
  "psgc-infrastructure",

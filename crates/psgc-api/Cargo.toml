@@ -13,6 +13,8 @@ utoipa-actix-web.workspace = true
 utoipa.workspace = true
 scalar-doc.workspace = true
 tracing.workspace = true
+thiserror.workspace = true
+bon.workspace = true
 
 psgc-domain = { path = "../psgc-domain" }
 psgc-application = { path = "../psgc-application" }
