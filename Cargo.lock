@@ -2121,9 +2121,9 @@ dependencies = [
 
 [[package]]
 name = "rbatis"
-version = "4.6.8"
+version = "4.6.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e029bd9847e588da0d91c897762940ae443d2c9f3923b4c3b318ca61907fbaea"
+checksum = "f764fcf45197797401faf067f797b87186086eafc5c01be01ec5808906c2c791"
 dependencies = [
  "async-trait",
  "dark-std",

@@ -22,8 +22,7 @@ impl PgDistrictRepository {
 #[allow(unused)]
 impl DistrictRepository for PgDistrictRepository {
     async fn find_by_code(&self, code: &str) -> Result<District, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
-        let district = models::district::District::select_by_code(&mut executor, code)
+        let district = models::district::District::select_by_code(self.db.as_ref(), code)
             .await
             .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?
             .ok_or(RepositoryError::NotFound)?;
@@ -36,9 +35,8 @@ impl DistrictRepository for PgDistrictRepository {
         page: u64,
         limit: u64,
     ) -> Result<PaginateResult<District>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let districts = models::district::District::list_districts(
-            &mut executor,
+            self.db.as_ref(),
             &PageRequest::new(page, limit),
         )
         .await
@@ -48,9 +46,8 @@ impl DistrictRepository for PgDistrictRepository {
     }
 
     async fn list_by_region_code(&self, code: &str) -> Result<Vec<District>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let districts =
-            models::district::District::list_districts_by_region_code(&mut executor, code)
+            models::district::District::list_districts_by_region_code(self.db.as_ref(), code)
                 .await
                 .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
@@ -58,9 +55,8 @@ impl DistrictRepository for PgDistrictRepository {
     }
 
     async fn list_by_province_code(&self, code: &str) -> Result<Vec<District>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let districts =
-            models::district::District::list_districts_by_province_code(&mut executor, code)
+            models::district::District::list_districts_by_province_code(self.db.as_ref(), code)
                 .await
                 .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
@@ -68,8 +64,7 @@ impl DistrictRepository for PgDistrictRepository {
     }
 
     async fn list_cities(&self, code: &str) -> Result<Vec<City>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
-        let cities = models::city::City::list_cities_by_district_code(&mut executor, code)
+        let cities = models::city::City::list_cities_by_district_code(self.db.as_ref(), code)
             .await
             .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
@@ -77,10 +72,9 @@ impl DistrictRepository for PgDistrictRepository {
     }
 
     async fn list_municipalities(&self, code: &str) -> Result<Vec<Municipality>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let municipalities =
             models::municipality::Municipality::list_municipalities_by_district_code(
-                &mut executor,
+                self.db.as_ref(),
                 code,
             )
             .await

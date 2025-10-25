@@ -22,8 +22,7 @@ impl PgCityRepository {
 #[allow(unused)]
 impl CityRepository for PgCityRepository {
     async fn find_by_code(&self, code: &str) -> Result<City, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
-        let city = models::city::City::select_by_code(&mut executor, code)
+        let city = models::city::City::select_by_code(self.db.as_ref(), code)
             .await
             .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?
             .ok_or(RepositoryError::NotFound)?;
@@ -36,17 +35,16 @@ impl CityRepository for PgCityRepository {
         page: u64,
         limit: u64,
     ) -> Result<PaginateResult<City>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
-        let cities = models::city::City::list_cities(&mut executor, &PageRequest::new(page, limit))
-            .await
-            .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
+        let cities =
+            models::city::City::list_cities(self.db.as_ref(), &PageRequest::new(page, limit))
+                .await
+                .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
         Ok(cities.into_domain::<City>())
     }
 
     async fn list_by_region_code(&self, code: &str) -> Result<Vec<City>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
-        let cities = models::city::City::list_cities_by_region_code(&mut executor, code)
+        let cities = models::city::City::list_cities_by_region_code(self.db.as_ref(), code)
             .await
             .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
@@ -54,8 +52,7 @@ impl CityRepository for PgCityRepository {
     }
 
     async fn list_by_province_code(&self, code: &str) -> Result<Vec<City>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
-        let cities = models::city::City::list_cities_by_province_code(&mut executor, code)
+        let cities = models::city::City::list_cities_by_province_code(self.db.as_ref(), code)
             .await
             .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
@@ -63,9 +60,8 @@ impl CityRepository for PgCityRepository {
     }
 
     async fn list_barangays(&self, codename: &str) -> Result<Vec<Barangay>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let barangays =
-            models::barangay::Barangay::list_barangays_by_city_code(&mut executor, &codename)
+            models::barangay::Barangay::list_barangays_by_city_code(self.db.as_ref(), &codename)
                 .await
                 .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 

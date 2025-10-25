@@ -22,11 +22,11 @@ impl PgMunicipalityRepository {
 #[allow(unused)]
 impl MunicipalityRepository for PgMunicipalityRepository {
     async fn find_by_code(&self, code: &str) -> Result<Municipality, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
-        let municipality = models::municipality::Municipality::select_by_code(&mut executor, code)
-            .await
-            .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?
-            .ok_or(RepositoryError::NotFound)?;
+        let municipality =
+            models::municipality::Municipality::select_by_code(self.db.as_ref(), code)
+                .await
+                .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?
+                .ok_or(RepositoryError::NotFound)?;
 
         Ok(municipality.into())
     }
@@ -36,9 +36,8 @@ impl MunicipalityRepository for PgMunicipalityRepository {
         page: u64,
         limit: u64,
     ) -> Result<PaginateResult<Municipality>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let municipalities = models::municipality::Municipality::list_municipalities(
-            &mut executor,
+            self.db.as_ref(),
             &PageRequest::new(page, limit),
         )
         .await
@@ -48,10 +47,9 @@ impl MunicipalityRepository for PgMunicipalityRepository {
     }
 
     async fn list_by_region_code(&self, code: &str) -> Result<Vec<Municipality>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let municipalities =
             models::municipality::Municipality::list_municipalities_by_region_code(
-                &mut executor,
+                self.db.as_ref(),
                 code,
             )
             .await
@@ -64,10 +62,9 @@ impl MunicipalityRepository for PgMunicipalityRepository {
         &self,
         code: &str,
     ) -> Result<Vec<Municipality>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let municipalities =
             models::municipality::Municipality::list_municipalities_by_province_code(
-                &mut executor,
+                self.db.as_ref(),
                 code,
             )
             .await
@@ -80,10 +77,9 @@ impl MunicipalityRepository for PgMunicipalityRepository {
         &self,
         code: &str,
     ) -> Result<Vec<Municipality>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let municipalities =
             models::municipality::Municipality::list_municipalities_by_district_code(
-                &mut executor,
+                self.db.as_ref(),
                 code,
             )
             .await
@@ -93,9 +89,8 @@ impl MunicipalityRepository for PgMunicipalityRepository {
     }
 
     async fn list_barangays(&self, code: &str) -> Result<Vec<Barangay>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let barangays =
-            models::barangay::Barangay::list_barangays_by_municipality_code(&mut executor, code)
+            models::barangay::Barangay::list_barangays_by_municipality_code(self.db.as_ref(), code)
                 .await
                 .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 

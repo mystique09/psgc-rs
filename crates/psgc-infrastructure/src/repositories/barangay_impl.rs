@@ -6,6 +6,7 @@ use psgc_domain::{
     repositories::barangay_repository::BarangayRepository,
 };
 use rbatis::{PageRequest, RBatis};
+use tracing::info;
 
 use crate::database::{generators::PageExt, models};
 
@@ -22,8 +23,7 @@ impl PgBarangayRepository {
 #[allow(unused)]
 impl BarangayRepository for PgBarangayRepository {
     async fn find_by_code(&self, code: &str) -> Result<Barangay, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
-        let barangay = models::barangay::Barangay::select_by_code(&mut executor, code)
+        let barangay = models::barangay::Barangay::select_by_code(self.db.as_ref(), code)
             .await
             .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?
             .ok_or(RepositoryError::NotFound)?;
@@ -36,21 +36,25 @@ impl BarangayRepository for PgBarangayRepository {
         page: u64,
         limit: u64,
     ) -> Result<PaginateResult<Barangay>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
+        let now = std::time::Instant::now();
+
         let barangays = models::barangay::Barangay::list_barangays(
-            &mut executor,
+            self.db.as_ref(),
             &PageRequest::new(page, limit),
         )
         .await
         .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
+        let finish = std::time::Instant::now();
+        let dur = finish - now;
+
+        info!("[REPO] Duration: {:?}", dur);
 
         Ok(barangays.into_domain::<Barangay>())
     }
 
     async fn list_by_city_code(&self, code: &str) -> Result<Vec<Barangay>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let barangays =
-            models::barangay::Barangay::list_barangays_by_city_code(&mut executor, code)
+            models::barangay::Barangay::list_barangays_by_city_code(self.db.as_ref(), code)
                 .await
                 .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
@@ -61,9 +65,8 @@ impl BarangayRepository for PgBarangayRepository {
         &self,
         code: &str,
     ) -> Result<Vec<Barangay>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let barangays =
-            models::barangay::Barangay::list_barangays_by_municipality_code(&mut executor, code)
+            models::barangay::Barangay::list_barangays_by_municipality_code(self.db.as_ref(), code)
                 .await
                 .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
@@ -71,9 +74,8 @@ impl BarangayRepository for PgBarangayRepository {
     }
 
     async fn list_by_district_code(&self, code: &str) -> Result<Vec<Barangay>, RepositoryError> {
-        let mut executor = self.db.acquire().await.unwrap();
         let barangays =
-            models::barangay::Barangay::list_barangays_by_district_code(&mut executor, code)
+            models::barangay::Barangay::list_barangays_by_district_code(self.db.as_ref(), code)
                 .await
                 .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 

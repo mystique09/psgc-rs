@@ -76,7 +76,7 @@ pub fn setup_tracing() {
 
     let filter_layer = tracing_subscriber::EnvFilter::try_from_default_env().unwrap_or_else(|_| {
         format!(
-            "RUST_LOG=info,{}=info,psgc_infrastructure=info,psgc_application=info,psgc_api=info,tokio=trace,runtime=trace,rbatis=info,actix_web=info",
+            "RUST_LOG=debug,{}=info,psgc_infrastructure=debug,psgc_application=info,psgc_api=info,tokio=info,runtime=info,rbatis=debug,rbdc=debug,actix_web=info",
             crate_name
         )
         .into()
