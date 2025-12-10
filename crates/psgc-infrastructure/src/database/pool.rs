@@ -1,5 +1,6 @@
 use rbatis::{DefaultPool, RBatis};
 use rbdc_pg::{driver::PgDriver, options::PgConnectOptions};
+use std::str::FromStr;
 use std::sync::Arc;
 use tracing::info;
 
@@ -11,12 +12,7 @@ pub async fn create_db_pool(config: &DatabaseConfig) -> anyhow::Result<Arc<RBati
 
     let driver = rbdc_pg::driver::PgDriver {};
 
-    let conn_options = PgConnectOptions::new()
-        .host(&config.db_host)
-        .port(config.db_port)
-        .username(&config.db_username)
-        .password(&config.db_password)
-        .database(&config.db_name);
+    let conn_options = PgConnectOptions::from_str(&config.db_url)?;
 
     db.init_option::<PgDriver, PgConnectOptions, DefaultPool>(driver, conn_options)?;
 
