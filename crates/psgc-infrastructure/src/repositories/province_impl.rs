@@ -19,7 +19,6 @@ impl PgProvinceRepository {
     }
 }
 
-#[allow(unused)]
 impl ProvinceRepository for PgProvinceRepository {
     async fn find_by_code(&self, code: &str) -> Result<Province, RepositoryError> {
         let province = models::province::Province::select_by_code(self.db.as_ref(), code)

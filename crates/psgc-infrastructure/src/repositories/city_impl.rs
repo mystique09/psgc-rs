@@ -19,7 +19,6 @@ impl PgCityRepository {
     }
 }
 
-#[allow(unused)]
 impl CityRepository for PgCityRepository {
     async fn find_by_code(&self, code: &str) -> Result<City, RepositoryError> {
         let city = models::city::City::select_by_code(self.db.as_ref(), code)

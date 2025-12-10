@@ -21,7 +21,7 @@ async fn main() -> anyhow::Result<()> {
 
     let http_config = HTTPConfig::from_env()?;
     let db_config = DatabaseConfig::from_env()?;
-    let db = create_db_pool(&db_config)?;
+    let db = create_db_pool(&db_config).await?;
 
     let region_repository = Arc::new(PgRegionRepository::new(db.clone()));
 
@@ -53,7 +53,7 @@ async fn main() -> anyhow::Result<()> {
         let router = create_api_router(api_state);
         router
     })
-    .workers(2)
+    .workers(10)
     .bind(http_addr)?
     // .bind_rustls_0_23(http_addr, tls)?
     .shutdown_timeout(5)
@@ -76,7 +76,7 @@ pub fn setup_tracing() {
 
     let filter_layer = tracing_subscriber::EnvFilter::try_from_default_env().unwrap_or_else(|_| {
         format!(
-            "RUST_LOG=debug,{}=info,psgc_infrastructure=debug,psgc_application=info,psgc_api=info,tokio=info,runtime=info,rbatis=debug,rbdc=debug,actix_web=info",
+            "trace,{}=info,psgc_infrastructure=debug,psgc_application=info,psgc_api=info,tokio=info,runtime=info,rbatis=trace,rbdc=trace,actix_web=info",
             crate_name
         )
         .into()

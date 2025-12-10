@@ -6,7 +6,6 @@ use psgc_domain::{
     repositories::barangay_repository::BarangayRepository,
 };
 use rbatis::{PageRequest, RBatis};
-use tracing::info;
 
 use crate::database::{generators::PageExt, models};
 
@@ -20,7 +19,6 @@ impl PgBarangayRepository {
     }
 }
 
-#[allow(unused)]
 impl BarangayRepository for PgBarangayRepository {
     async fn find_by_code(&self, code: &str) -> Result<Barangay, RepositoryError> {
         let barangay = models::barangay::Barangay::select_by_code(self.db.as_ref(), code)
@@ -36,20 +34,15 @@ impl BarangayRepository for PgBarangayRepository {
         page: u64,
         limit: u64,
     ) -> Result<PaginateResult<Barangay>, RepositoryError> {
-        let now = std::time::Instant::now();
+        let db = self.db.as_ref();
+        let barangays =
+            models::barangay::Barangay::list_barangays(db, &PageRequest::new(page, limit))
+                .await
+                .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
 
-        let barangays = models::barangay::Barangay::list_barangays(
-            self.db.as_ref(),
-            &PageRequest::new(page, limit),
-        )
-        .await
-        .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
-        let finish = std::time::Instant::now();
-        let dur = finish - now;
+        let barangays = barangays.into_domain::<Barangay>();
 
-        info!("[REPO] Duration: {:?}", dur);
-
-        Ok(barangays.into_domain::<Barangay>())
+        Ok(barangays)
     }
 
     async fn list_by_city_code(&self, code: &str) -> Result<Vec<Barangay>, RepositoryError> {

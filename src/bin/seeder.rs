@@ -11,7 +11,7 @@ async fn main() -> anyhow::Result<()> {
     setup_tracing();
 
     let config = DatabaseConfig::from_env()?;
-    let pool = create_db_pool(&config)?;
+    let pool = create_db_pool(&config).await?;
 
     info!("Initializing PSGC database seed...");
     seeder(pool).await?;

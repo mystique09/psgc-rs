@@ -19,7 +19,6 @@ impl PgMunicipalityRepository {
     }
 }
 
-#[allow(unused)]
 impl MunicipalityRepository for PgMunicipalityRepository {
     async fn find_by_code(&self, code: &str) -> Result<Municipality, RepositoryError> {
         let municipality =

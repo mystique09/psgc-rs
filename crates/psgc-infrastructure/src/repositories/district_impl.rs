@@ -19,7 +19,6 @@ impl PgDistrictRepository {
     }
 }
 
-#[allow(unused)]
 impl DistrictRepository for PgDistrictRepository {
     async fn find_by_code(&self, code: &str) -> Result<District, RepositoryError> {
         let district = models::district::District::select_by_code(self.db.as_ref(), code)

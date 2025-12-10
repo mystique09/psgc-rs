@@ -15,21 +15,20 @@ resolver = "2"
 
 [workspace.dependencies]
 rbs = "4.6.2"
-rbatis = "4.6.12"
-rbdc-pg = "4.6.2"
-bb8 = "0.9.0"
+rbatis = "4.6.13"
+rbdc-pg = "4.6.3"
+bb8 = "0.9.1"
 bb8-postgres = "0.9.0"
-log = "0.4"
 fast_log = "1.6"
 actix = "0.13.5"
-actix-web = "4"
+actix-web = "4.12.1"
 actix-cors = "0.7.1"
-actix-governor = "0.8.0"
-bon = "3.0.0"
+actix-governor = "0.10.0"
+bon = "3.8.1"
 dotenvy = "0.15.7"
-tracing = "0.1.41"
+tracing = "0.1.43"
 tracing-log = "0.2.0"
-tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+tracing-subscriber = { version = "0.3.22", features = ["env-filter"] }
 actix-multipart = "0.7.2"
 utoipa-actix-web = "0.1.2"
 utoipa = { version = "5.4.0", features = ["uuid", "chrono"] }
@@ -43,7 +42,7 @@ version = "1.0.228"
 features = ["derive"]
 
 [workspace.dependencies.tokio]
-version = "1"
+version = "1.48.0"
 default-features = false
 
 [workspace.dependencies.chrono]
@@ -51,7 +50,7 @@ version = "0.4.40"
 features = ["serde"]
 
 [workspace.dependencies.uuid]
-version = "1.16.0"
+version = "1.19.0"
 features = ["v7", "serde"]
 
 [workspace.dependencies.tokio-postgres]
@@ -59,7 +58,7 @@ version = "0.7.15"
 features = ["with-uuid-1"]
 
 [workspace.dependencies.refinery]
-version = "0.8.16"
+version = "0.9.0"
 features = ["tokio-postgres"]
 
 [dependencies]

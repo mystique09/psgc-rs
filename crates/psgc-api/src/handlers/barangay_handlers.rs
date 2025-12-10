@@ -8,7 +8,6 @@ use psgc_domain::repositories::{
     district_repository::DistrictRepository, municipality_repository::MunicipalityRepository,
     province_repository::ProvinceRepository, region_repository::RegionRepository,
 };
-use tracing::info;
 use utoipa::OpenApi;
 
 use crate::{
@@ -79,15 +78,9 @@ async fn list_barangays<
     let barangay_repository = state.barangay_repository.clone();
     let list_barangays_usecase = ListBarangaysUsecase::new(barangay_repository);
 
-    let now = std::time::Instant::now();
     let barangays = list_barangays_usecase
         .execute(param.page(), param.limit())
         .await?;
-    let later = std::time::Instant::now();
-
-    let duration = later - now;
-
-    info!("Duration: {:?}", duration);
 
     Ok(Json(APIOk::success_with_message(
         "All Barangays".to_string(),

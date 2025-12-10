@@ -21,7 +21,6 @@ impl PgRegionRepository {
     }
 }
 
-#[allow(unused)]
 impl RegionRepository for PgRegionRepository {
     async fn find_by_code(&self, code: &str) -> Result<Region, RepositoryError> {
         let region = models::region::Region::select_by_codename(self.db.as_ref(), code)
